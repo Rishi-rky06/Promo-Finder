@@ -1,0 +1,83 @@
+# Promo Finder configuration. Copy this file and pass --config my.toml to override.
+# Every value here can be changed without touching the source code.
+
+[provider]
+# anthropic | openai_compatible | file | heuristic
+name = "anthropic"
+workers = 4                 # parallel episode requests for API providers
+cache_dir = ".cache/model_responses"   # identical prompts are never paid for twice
+
+[provider.anthropic]
+model = "claude-opus-5-5"
+effort = "medium"           # low | medium | high | xhigh | max
+max_tokens = 16000
+# Server-side refusal fallback (re-runs a declined request on another model).
+use_refusal_fallback = true
+
+[provider.openai_compatible]
+# Any OpenAI-compatible Chat Completions endpoint: Google Gemini (free tier),
+# Groq, OpenRouter, a local vLLM/Ollama server, or an internal Kuku gateway.
+base_url = "https://generativelanguage.googleapis.com/v1beta/openai/"
+api_key_env = "GEMINI_API_KEY"   # name of the env var holding the key (never the key itself)
+model = ""                        # REQUIRED, e.g. a current Gemini Flash model id from Google AI Studio
+json_mode = "schema"              # schema | object | prompt  (fallbacks for endpoints without json_schema)
+max_tokens = 16000
+temperature = 0.2
+
+[provider.file]
+# File-exchange provider: writes each prompt to <run>/exchange/requests/ and reads
+# answers from <run>/exchange/responses/. Lets any chat model (or a person) answer.
+exchange_dir = ""                 # default: <output dir>/exchange
+
+[promo]
+min_seconds = 20.0
+max_seconds = 60.0
+hook_window_seconds = 3.0         # the hook event must start within this many seconds of the clip start
+cliffhanger_tail_seconds = 4.0    # the clip must end within this many seconds after the cliffhanger line ends
+max_segments = 3
+candidates_per_episode = 3
+dead_air_open_seconds = 2.5       # silence (no dialogue/action/sfx) at the open longer than this is flagged
+repair_attempts = 1               # how many times the model may fix a candidate that failed validation
+
+[weights]
+# Sub-scores are 1-5 from the model; total = 100 * weighted mean of (score-1)/4, minus penalties.
+hook = 0.25
+cliffhanger = 0.25
+standalone = 0.20
+emotion_curiosity = 0.15
+visual = 0.08
+spoiler_safety = 0.07
+
+[penalties]
+# Deterministic, code-measured penalties (points off the 0-100 total).
+late_hook = 12.0                  # hook line starts after hook_window_seconds
+cut_after_cliffhanger = 6.0       # clip keeps running after the cliffhanger lands
+dead_air_open = 5.0
+camera_only_hook = 4.0              # claimed hook is only a camera-framing description (no line/action/sound)
+per_extra_segment = 3.0           # prefer continuous clips
+cross_episode = 3.0               # montage across episodes is harder to follow without overlays
+boundary_adjusted = 1.0           # code had to move a boundary to avoid cutting a line mid-sentence
+cold_viewer_confused = 8.0        # AI cold-viewer review could not follow the clip
+episode_depth_per_10 = 0.0        # optional: points off per 10 episodes into the show (a new viewer starts at ep 1;
+                                  # later clips advertise payoffs further from where they land). 0 = off.
+
+[ranking]
+shortlist_size = 10
+max_per_episode_in_shortlist = 1  # variety: one promo per episode in the "post first" list
+same_episode_overlap = 0.5        # time-overlap ratio above which two clips are near-duplicates
+text_similarity = 0.6             # dialogue-token Jaccard above which two clips are near-duplicates
+
+[review]
+cold_viewer = true                # second, context-free model pass on the top candidates
+cold_viewer_top_n = 12
+
+[montage]
+enabled = true                    # cross-episode multi-segment promos built from top single-episode moments
+source_candidates = 20
+max_montages = 3
+
+[pricing]
+# USD per million tokens, used only for cost *estimates* in the run manifest.
+"claude-opus-5-5" = { input = 4.0, output = 20.0 }
+"claude-sonnet-5-5" = { input = 2.0, output = 10.0 }
+"claude-haiku-5-5" = { input = 0.10, output = 0.50 }

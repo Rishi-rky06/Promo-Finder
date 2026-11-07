@@ -1,0 +1,43 @@
+{
+  "input": "samples/synthetic_show",
+  "episodes_found": 2,
+  "skipped_files": [
+    {
+      "file": "README.txt",
+      "reason": "no timed screenplay blocks found"
+    }
+  ],
+  "warnings": [],
+  "episodes": [
+    {
+      "episode": 1,
+      "source_file": "episode-001-sample.txt",
+      "scenes": 1,
+      "events": 18,
+      "events_by_kind": {
+        "camera": 6,
+        "dialogue": 8,
+        "action": 2,
+        "sfx": 2
+      },
+      "duration_seconds": 39.0,
+      "duration_tc": "00:39.00",
+      "anomalies": []
+    },
+    {
+      "episode": 2,
+      "source_file": "episode-002-sample.txt",
+      "scenes": 1,
+      "events": 13,
+      "events_by_kind": {
+        "camera": 3,
+        "action": 2,
+        "dialogue": 7,
+        "sfx": 1
+      },
+      "duration_seconds": 36.0,
+      "duration_tc": "00:36.00",
+      "anomalies": []
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+# Runtime
+anthropic>=2.6,<3       # Claude provider (structured JSON output, refusal fallback)
+openai>=2.0             # OpenAI-compatible provider (Gemini free tier, Groq, OpenRouter, vLLM, gateways)
+streamlit>=1.50         # editor UI (app.py)
+pandas>=2.0             # tables in the UI
+# Tests
+pytest>=8

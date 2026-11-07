@@ -1,0 +1,19 @@
+# NVIDIA API catalog (build.nvidia.com) via its OpenAI-compatible endpoint.
+# Set the key in your shell, never in this file:   set NVIDIA_API_KEY=nvapi-...
+[provider]
+name = "openai_compatible"
+workers = 4
+
+[provider.openai_compatible]
+base_url = "https://integrate.api.nvidia.com/v1"
+api_key_env = "NVIDIA_API_KEY"
+model = "nvidia/nemotron-3-ultra-550b-a55b"
+json_mode = "prompt"             # NIM endpoints often lack OpenAI json_schema; schema is put in the prompt instead
+max_tokens = 16000
+# Optional provider-specific fields; uncomment only if your model documents them (name varies by model):
+# extra_body = { chat_template_kwargs = { enable_thinking = false } }
+temperature = 0.2
+
+[review]
+cold_viewer = true
+cold_viewer_top_n = 40        # scores saturate on this model, so review far more than the default 12

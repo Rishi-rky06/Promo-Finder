@@ -1,0 +1,59 @@
+{
+  "task_id": "review_M1",
+  "stage": "cold_viewer",
+  "request": {
+    "system": "You are a typical viewer scrolling short-form video. You have NEVER heard of this show. Below is the complete\nscreenplay of one short clip (camera, action, dialogue and sound), and separately what happens in its first\n3 seconds. Use ONLY what is in the clip. Do not guess plot from outside knowledge. Be honest and specific:\nif you would scroll past, say so.\n",
+    "user": "FIRST 3 SECONDS:\n[  0.0s] CAM Close-up on MAYA, a waitress, freezing as a man in a grey suit slides a photograph across the counter.\n[  0.2s] DIA VICTOR (Low, Menacing): \"You buried the wrong sister.\"\n[  2.4s] DIA MAYA (Stunned): \"What did you say?\"\n\nFULL CLIP:\n[  0.0s] CAM Close-up on MAYA, a waitress, freezing as a man in a grey suit slides a photograph across the counter.\n[  0.2s] DIA VICTOR (Low, Menacing): \"You buried the wrong sister.\"\n[  2.4s] DIA MAYA (Stunned): \"What did you say?\"\n[  3.6s] CAM Insert on the photograph: Maya's twin, smiling, holding today's newspaper.\n[  4.0s] DIA VICTOR (Cold): \"She is alive. And she wants your life back.\"\n[  6.8s] CAM Over-the-shoulder shot revealing a woman with Maya's face at the far end of the pier.\n[ 10.0s] DIA ELENA (Calm): \"Hello, sister. You look tired.\"\n[ 12.8s] DIA MAYA (Breaking): \"You let me grieve you for a year!\"\n[ 15.3s] DIA ELENA (Cold): \"I let you keep my husband warm for a year.\"\n[ 18.8s] ACT Maya steps back as headlights flare behind Elena.\n[ 20.8s] DIA MAYA (Defiant): \"And if I refuse?\"\n[ 22.8s] CAM Close-up on Elena raising a ring with Maya's initials engraved inside.\n[ 25.3s] DIA ELENA (Smiling): \"Then the police find this beside his body.\"\n\nScores are 1-5 integers (5 = strongest). Answer as the viewer.",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "what_i_understood": {
+          "type": "string"
+        },
+        "confusing_points": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "first_3_seconds_stop_scrolling": {
+          "type": "integer"
+        },
+        "first_3_seconds_reason": {
+          "type": "string"
+        },
+        "ending_leaves_open_question": {
+          "type": "boolean"
+        },
+        "open_question": {
+          "type": "string"
+        },
+        "could_follow_without_context": {
+          "type": "boolean"
+        },
+        "would_watch_next_episode": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "what_i_understood",
+        "confusing_points",
+        "first_3_seconds_stop_scrolling",
+        "first_3_seconds_reason",
+        "ending_leaves_open_question",
+        "open_question",
+        "could_follow_without_context",
+        "would_watch_next_episode"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "provider": "openai_compatible",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b",
+  "usage": {
+    "input_tokens": 742,
+    "output_tokens": 1014
+  },
+  "cached": true,
+  "response_text": "{\n  \"what_i_understood\": \"Maya is a waitress confronted by a man named Victor who slides a photo across the counter showing her twin sister Elena alive, holding today's newspaper. Elena appears at the pier and reveals she's been alive for a year while Maya grieved her. Elena claims Maya has been with her husband, and threatens to plant a ring with Maya's initials beside his body if Maya doesn't comply with whatever Elena wants.\",\n  \"confusing_points\": [\n    \"Who is Victor and what's his relationship to Elena/Maya?\",\n    \"Who is 'he' / the husband - Elena's husband that Maya has been keeping warm?\",\n    \"Why was Elena presumed dead and buried a year ago?\",\n    \"What exactly does Elena want Maya to do ('wants your life back')?\",\n    \"Is the husband dead already or is Elena threatening to kill him?\"\n  ],\n  \"first_3_seconds_stop_scrolling\": 1,\n  \"first_3_seconds_reason\": \"The line 'You buried the wrong sister' is an immediate, high-stakes hook that raises instant questions about identity, death, and deception. The close-up on Maya freezing sells the shock. I'd keep watching to see the photo and hear her reaction.\",\n  \"ending_leaves_open_question\": true,\n  \"open_question\": \"Will Maya submit to Elena's blackmail, and what exactly does Elena want her to do? Also, is the husband already dead or is this a setup for murder?\",\n  \"could_follow_without_context\": true,\n  \"would_watch_next_episode\": 5\n}"
+}

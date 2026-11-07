@@ -1,0 +1,1379 @@
+{
+  "manifest": {
+    "tool": "promo-finder",
+    "version": "1.0.0",
+    "started_utc": "2026-11-07T21:28:25+00:00",
+    "finished_utc": "2026-11-07T21:28:28+00:00",
+    "elapsed_s": 2.9,
+    "status": "complete",
+    "input": "samples/synthetic_show",
+    "show_title": "synthetic_show",
+    "episodes_found": 2,
+    "episodes_mined_ok": 2,
+    "episodes_pending": [],
+    "episodes_failed": [],
+    "skipped_files": [
+      {
+        "file": "README.txt",
+        "reason": "no timed screenplay blocks found"
+      }
+    ],
+    "provider": "openai_compatible",
+    "provider_detail": "openai_compatible:nvidia/nemotron-3-ultra-550b-a55b",
+    "responder": null,
+    "stages": {
+      "montage": "ok",
+      "cold_viewer": "ok"
+    },
+    "tasks_pending": [],
+    "tasks_failed": [],
+    "counts": {
+      "candidates_valid": 3,
+      "candidates_rejected": 0,
+      "montages_valid": 1,
+      "shortlist": 2,
+      "alternatives": 0,
+      "duplicates": 1
+    },
+    "usage_measured": {
+      "input_tokens": 9036,
+      "output_tokens": 12208
+    },
+    "cost_estimate": {
+      "pricing_model": "claude-opus-5-5",
+      "note": "Provider is openai_compatible, not billed here. hypothetical_usd_at_listed_price is what these measured tokens would cost at claude-opus-5-5 list prices, for comparison only.",
+      "measured_tokens": {
+        "input": 9036,
+        "output_incl_thinking": 12208
+      },
+      "hypothetical_usd_at_listed_price": 0.28
+    },
+    "tasks": [
+      {
+        "task_id": "mine_E01",
+        "stage": "mine",
+        "status": "ok",
+        "error": null,
+        "usage": {
+          "input_tokens": 2520,
+          "output_tokens": 5196
+        },
+        "cached": true,
+        "elapsed_s": 0.0,
+        "prompt_chars": 5592,
+        "response_chars": 5032,
+        "model": "nvidia/nemotron-3-ultra-550b-a55b",
+        "provider": "openai_compatible"
+      },
+      {
+        "task_id": "mine_E02",
+        "stage": "mine",
+        "status": "ok",
+        "error": null,
+        "usage": {
+          "input_tokens": 2322,
+          "output_tokens": 3233
+        },
+        "cached": true,
+        "elapsed_s": 0.0,
+        "prompt_chars": 5143,
+        "response_chars": 4249,
+        "model": "nvidia/nemotron-3-ultra-550b-a55b",
+        "provider": "openai_compatible"
+      },
+      {
+        "task_id": "montage",
+        "stage": "montage",
+        "status": "ok",
+        "error": null,
+        "usage": {
+          "input_tokens": 2647,
+          "output_tokens": 1867
+        },
+        "cached": true,
+        "elapsed_s": 0.0,
+        "prompt_chars": 5272,
+        "response_chars": 4050,
+        "model": "nvidia/nemotron-3-ultra-550b-a55b",
+        "provider": "openai_compatible"
+      },
+      {
+        "task_id": "review_E01-C1",
+        "stage": "cold_viewer",
+        "status": "ok",
+        "error": null,
+        "usage": {
+          "input_tokens": 805,
+          "output_tokens": 898
+        },
+        "cached": true,
+        "elapsed_s": 0.0,
+        "prompt_chars": 1816,
+        "response_chars": 1540,
+        "model": "nvidia/nemotron-3-ultra-550b-a55b",
+        "provider": "openai_compatible"
+      },
+      {
+        "task_id": "review_M1",
+        "stage": "cold_viewer",
+        "status": "ok",
+        "error": null,
+        "usage": {
+          "input_tokens": 742,
+          "output_tokens": 1014
+        },
+        "cached": true,
+        "elapsed_s": 0.0,
+        "prompt_chars": 1646,
+        "response_chars": 1411,
+        "model": "nvidia/nemotron-3-ultra-550b-a55b",
+        "provider": "openai_compatible"
+      }
+    ],
+    "config": {
+      "provider": {
+        "name": "openai_compatible",
+        "workers": 4,
+        "cache_dir": ".cache/model_responses",
+        "anthropic": {
+          "model": "claude-opus-5-5",
+          "effort": "medium",
+          "max_tokens": 16000,
+          "use_refusal_fallback": true
+        },
+        "openai_compatible": {
+          "base_url": "https://integrate.api.nvidia.com/v1",
+          "api_key_env": "NVIDIA_API_KEY",
+          "model": "nvidia/nemotron-3-ultra-550b-a55b",
+          "json_mode": "prompt",
+          "max_tokens": 16000,
+          "temperature": 0.2
+        },
+        "file": {
+          "exchange_dir": ""
+        }
+      },
+      "promo": {
+        "min_seconds": 20.0,
+        "max_seconds": 60.0,
+        "hook_window_seconds": 3.0,
+        "cliffhanger_tail_seconds": 4.0,
+        "max_segments": 3,
+        "candidates_per_episode": 3,
+        "dead_air_open_seconds": 2.5,
+        "repair_attempts": 1
+      },
+      "weights": {
+        "hook": 0.25,
+        "cliffhanger": 0.25,
+        "standalone": 0.2,
+        "emotion_curiosity": 0.15,
+        "visual": 0.08,
+        "spoiler_safety": 0.07
+      },
+      "penalties": {
+        "late_hook": 12.0,
+        "cut_after_cliffhanger": 6.0,
+        "dead_air_open": 5.0,
+        "camera_only_hook": 4.0,
+        "per_extra_segment": 3.0,
+        "cross_episode": 3.0,
+        "boundary_adjusted": 1.0,
+        "cold_viewer_confused": 8.0,
+        "episode_depth_per_10": 0.0
+      },
+      "ranking": {
+        "shortlist_size": 10,
+        "max_per_episode_in_shortlist": 1,
+        "same_episode_overlap": 0.5,
+        "text_similarity": 0.6
+      },
+      "review": {
+        "cold_viewer": true,
+        "cold_viewer_top_n": 40
+      },
+      "montage": {
+        "enabled": true,
+        "source_candidates": 20,
+        "max_montages": 3
+      },
+      "pricing": {
+        "claude-opus-5-5": {
+          "input": 4.0,
+          "output": 20.0
+        },
+        "claude-sonnet-5-5": {
+          "input": 2.0,
+          "output": 10.0
+        },
+        "claude-haiku-5-5": {
+          "input": 0.1,
+          "output": 0.5
+        }
+      }
+    }
+  },
+  "episodes": [
+    {
+      "episode": 1,
+      "status": "ok",
+      "episode_note": "This episode is a single 39-second scene in a rain-soaked diner where a stranger (Victor) tells waitress Maya that the twin sister she buried is alive. The entire episode is dense with hook-worthy beats, but its brevity means any 20-60s promo must start on the very first shocking line to satisfy the 3-second hook rule. The climax — a photograph with 'DON'T TRUST HIM' in Maya's own handwriting — is a superb visual cliffhanger.",
+      "valid": [
+        "E01-C1"
+      ],
+      "rejected": []
+    },
+    {
+      "episode": 2,
+      "status": "ok",
+      "episode_note": "Episode 2 is only 36 seconds long and consists almost entirely of the pier confrontation between Maya and her twin Elena. The first 9 seconds are slow establishing shots; the dramatic meat runs from the twin reveal (L004) through the blackmail threat (L012). A single continuous 25-second segment from L004 to L012 delivers a visual hook, clear standalone stakes, and a high-stakes cliffhanger. No other non-overlapping segment meets the 20-second minimum with a strong hook and cliffhanger.",
+      "valid": [
+        "E02-C1"
+      ],
+      "rejected": []
+    }
+  ],
+  "candidates": [
+    {
+      "id": "E01-C1",
+      "origin": "model",
+      "episodes": [
+        1
+      ],
+      "title": "You Buried the Wrong Sister",
+      "segments": [
+        {
+          "episode": 1,
+          "start_id": "L002",
+          "end_id": "L016",
+          "start": 3.0,
+          "end": 36.0,
+          "start_tc": "00:03.00",
+          "end_tc": "00:36.00",
+          "duration": 33.0
+        }
+      ],
+      "metrics": {
+        "total_duration": 33.0,
+        "segments": 1,
+        "hook_offset": 0.2,
+        "cliffhanger_tail": 0.0,
+        "first_beat_offset": 0.2,
+        "first_dialogue_offset": 0.2,
+        "dialogue_lines": 8,
+        "speakers": 2,
+        "longest_gap_without_dialogue": 8.5
+      },
+      "hook": "Victor slides a photo across the counter and says, 'You buried the wrong sister.' (L003)",
+      "hook_line": "L003 [00:03.20-00:05.00] DIA VICTOR (Low, Menacing): \"You buried the wrong sister.\"",
+      "cliffhanger": "Maya turns the photo over; the back reads 'DON'T TRUST HIM' in her own handwriting. (L016)",
+      "cliffhanger_line": "L016 [00:33.00-00:36.00] ACT Maya turns the photograph over. On the back, in her own handwriting: DON'T TRUST HIM.",
+      "why_it_works": "Opens on the single most arresting line in the episode — a direct, impossible accusation that forces a stranger to stop scrolling. The clip then escalates cleanly: photo proof of the living twin with today's newspaper, Victor's cold threat ('She wants your life back'), Maya shattering a coffee pot in raw panic, the coffin/box revelation, the midnight pier meet-up, Victor's ambiguous exit, and finally the handwritten note that reframes everything. Every beat is visual, high-stakes, and comprehensible without prior context.",
+      "stranger_view": "A waitress is told the sister she mourned is alive and coming for her life. A photo proves it. The stranger who delivered the news may be the enemy. The clip ends on a note in the waitress's own writing warning her not to trust him. Who is the twin? Who is Victor? Why did she write that note? The questions are immediate and visceral.",
+      "evidence": [
+        {
+          "episode": 1,
+          "id": "L002",
+          "render": "L002 [00:03.00-00:05.00] CAM Close-up on MAYA, a waitress, freezing as a man in a grey suit slides a photograph across the counter.",
+          "inside_clip": true
+        },
+        {
+          "episode": 1,
+          "id": "L003",
+          "render": "L003 [00:03.20-00:05.00] DIA VICTOR (Low, Menacing): \"You buried the wrong sister.\"",
+          "inside_clip": true
+        },
+        {
+          "episode": 1,
+          "id": "L005",
+          "render": "L005 [00:06.60-00:09.00] CAM Insert on the photograph: Maya's twin, smiling, holding today's newspaper.",
+          "inside_clip": true
+        },
+        {
+          "episode": 1,
+          "id": "L006",
+          "render": "L006 [00:07.00-00:09.80] DIA VICTOR (Cold): \"She is alive. And she wants your life back.\"",
+          "inside_clip": true
+        },
+        {
+          "episode": 1,
+          "id": "L007",
+          "render": "L007 [00:10.00-00:12.00] ACT Maya drops the coffee pot. It shatters across the tiles.",
+          "inside_clip": true
+        },
+        {
+          "episode": 1,
+          "id": "L010",
+          "render": "L010 [00:15.40-00:18.00] DIA VICTOR (Amused): \"You watched them lower a box.\"",
+          "inside_clip": true
+        },
+        {
+          "episode": 1,
+          "id": "L012",
+          "render": "L012 [00:21.20-00:24.50] DIA VICTOR (Quiet): \"Midnight. The old pier. Come alone.\"",
+          "inside_clip": true
+        },
+        {
+          "episode": 1,
+          "id": "L014",
+          "render": "L014 [00:27.50-00:30.00] DIA VICTOR (Smiling): \"Who said I was?\"",
+          "inside_clip": true
+        },
+        {
+          "episode": 1,
+          "id": "L016",
+          "render": "L016 [00:33.00-00:36.00] ACT Maya turns the photograph over. On the back, in her own handwriting: DON'T TRUST HIM.",
+          "inside_clip": true
+        }
+      ],
+      "scores": {
+        "hook": {
+          "score": 5,
+          "reason": "The line 'You buried the wrong sister' lands at 3.2s (clip starts at 3.0s on L002). It is a flat-out impossible accusation delivered with menace — zero context needed, maximum scroll-stop power."
+        },
+        "cliffhanger": {
+          "score": 5,
+          "reason": "Cuts exactly on the reveal of 'DON'T TRUST HIM' in Maya's handwriting. It reframes Victor's visit, implies Maya knew or wrote it earlier, and leaves the twin's status, Victor's allegiance, and Maya's next move all wide open."
+        },
+        "standalone": {
+          "score": 4,
+          "reason": "A first-time viewer grasps the core conflict: Maya buried her twin, a stranger proves the twin is alive and threatening, and Maya has a mysterious self-written warning. Victor's identity and the note's origin remain mysteries (intentional), but the stakes and sides are clear."
+        },
+        "emotion_curiosity": {
+          "score": 5,
+          "reason": "Combines shock (wrong sister), dread (twin wants her life), visceral action (shattering pot), intellectual puzzle (coffin vs box, the note), and paranoia (Victor's 'Who said I was helping?'). The curiosity gap is massive."
+        },
+        "visual": {
+          "score": 4,
+          "reason": "Tight close-ups (Maya freezing, photo insert, pot smash, photo turn-over), readable text (newspaper date, handwritten note), and physical action. The diner setting is simple but the compositions are phone-friendly. Only the medium shots of Victor buttoning his coat are less striking."
+        },
+        "spoiler_safety": {
+          "score": 4,
+          "reason": "Reveals the series premise (twin alive) which is public from the logline/title. The handwritten note is the episode's own cliffhanger, not a future twist. No payoff from Ep 2+ is given. The only risk is showing the episode's final sting, but that is the promo's job."
+        }
+      },
+      "context_dependencies": [
+        "Victor's true allegiance and employer are unknown — the clip leans into that ambiguity.",
+        "The origin of the 'DON'T TRUST HIM' note (when/why Maya wrote it) is not explained and requires future episodes.",
+        "The twin's identity, motives, and current situation are entirely unseen."
+      ],
+      "spoiler_risk": "low",
+      "spoiler_note": "Shows the episode's central revelation and its final cliffhanger image. Both are premise-level hooks for the series, not resolutions of later arcs.",
+      "weaknesses": [
+        "The episode is only 39s long; the promo uses 33s of it, leaving almost no room for pacing breaths or music cues.",
+        "Victor's 'Midnight. The old pier. Come alone.' setup pays off in Ep 2 — a viewer who watches only this promo won't see the payoff, but the line works as a standalone threat.",
+        "The handwritten note twist is so strong it may raise expectations the show must deliver on quickly."
+      ],
+      "model_confidence": "high",
+      "errors": [],
+      "warnings": [],
+      "valid": true,
+      "transcript": [
+        {
+          "episode": 1,
+          "id": "L002",
+          "kind": "camera",
+          "segment": 1,
+          "clip_time": 0.0,
+          "render": "L002 [00:03.00-00:05.00] CAM Close-up on MAYA, a waitress, freezing as a man in a grey suit slides a photograph across the counter.",
+          "speaker": "",
+          "text": "Close-up on MAYA, a waitress, freezing as a man in a grey suit slides a photograph across the counter."
+        },
+        {
+          "episode": 1,
+          "id": "L003",
+          "kind": "dialogue",
+          "segment": 1,
+          "clip_time": 0.2,
+          "render": "L003 [00:03.20-00:05.00] DIA VICTOR (Low, Menacing): \"You buried the wrong sister.\"",
+          "speaker": "VICTOR",
+          "text": "\"You buried the wrong sister.\""
+        },
+        {
+          "episode": 1,
+          "id": "L004",
+          "kind": "dialogue",
+          "segment": 1,
+          "clip_time": 2.4,
+          "render": "L004 [00:05.40-00:06.60] DIA MAYA (Stunned): \"What did you say?\"",
+          "speaker": "MAYA",
+          "text": "\"What did you say?\""
+        },
+        {
+          "episode": 1,
+          "id": "L005",
+          "kind": "camera",
+          "segment": 1,
+          "clip_time": 3.6,
+          "render": "L005 [00:06.60-00:09.00] CAM Insert on the photograph: Maya's twin, smiling, holding today's newspaper.",
+          "speaker": "",
+          "text": "Insert on the photograph: Maya's twin, smiling, holding today's newspaper."
+        },
+        {
+          "episode": 1,
+          "id": "L006",
+          "kind": "dialogue",
+          "segment": 1,
+          "clip_time": 4.0,
+          "render": "L006 [00:07.00-00:09.80] DIA VICTOR (Cold): \"She is alive. And she wants your life back.\"",
+          "speaker": "VICTOR",
+          "text": "\"She is alive. And she wants your life back.\""
+        },
+        {
+          "episode": 1,
+          "id": "L007",
+          "kind": "action",
+          "segment": 1,
+          "clip_time": 7.0,
+          "render": "L007 [00:10.00-00:12.00] ACT Maya drops the coffee pot. It shatters across the tiles.",
+          "speaker": "",
+          "text": "Maya drops the coffee pot. It shatters across the tiles."
+        },
+        {
+          "episode": 1,
+          "id": "L008",
+          "kind": "sfx",
+          "segment": 1,
+          "clip_time": 7.1,
+          "render": "L008 [00:10.10-00:11.00] SFX Sharp crash of shattering glass.",
+          "speaker": "",
+          "text": "Sharp crash of shattering glass."
+        },
+        {
+          "episode": 1,
+          "id": "L009",
+          "kind": "dialogue",
+          "segment": 1,
+          "clip_time": 9.5,
+          "render": "L009 [00:12.50-00:15.00] DIA MAYA (Shaking): \"I watched them lower her coffin.\"",
+          "speaker": "MAYA",
+          "text": "\"I watched them lower her coffin.\""
+        },
+        {
+          "episode": 1,
+          "id": "L010",
+          "kind": "dialogue",
+          "segment": 1,
+          "clip_time": 12.4,
+          "render": "L010 [00:15.40-00:18.00] DIA VICTOR (Amused): \"You watched them lower a box.\"",
+          "speaker": "VICTOR",
+          "text": "\"You watched them lower a box.\""
+        },
+        {
+          "episode": 1,
+          "id": "L011",
+          "kind": "camera",
+          "segment": 1,
+          "clip_time": 15.0,
+          "render": "L011 [00:18.00-00:21.00] CAM Medium shot as Victor stands, buttoning his coat.",
+          "speaker": "",
+          "text": "Medium shot as Victor stands, buttoning his coat."
+        },
+        {
+          "episode": 1,
+          "id": "L012",
+          "kind": "dialogue",
+          "segment": 1,
+          "clip_time": 18.2,
+          "render": "L012 [00:21.20-00:24.50] DIA VICTOR (Quiet): \"Midnight. The old pier. Come alone.\"",
+          "speaker": "VICTOR",
+          "text": "\"Midnight. The old pier. Come alone.\""
+        },
+        {
+          "episode": 1,
+          "id": "L013",
+          "kind": "dialogue",
+          "segment": 1,
+          "clip_time": 22.0,
+          "render": "L013 [00:25.00-00:27.00] DIA MAYA (Desperate): \"Why are you helping me?\"",
+          "speaker": "MAYA",
+          "text": "\"Why are you helping me?\""
+        },
+        {
+          "episode": 1,
+          "id": "L014",
+          "kind": "dialogue",
+          "segment": 1,
+          "clip_time": 24.5,
+          "render": "L014 [00:27.50-00:30.00] DIA VICTOR (Smiling): \"Who said I was?\"",
+          "speaker": "VICTOR",
+          "text": "\"Who said I was?\""
+        },
+        {
+          "episode": 1,
+          "id": "L015",
+          "kind": "camera",
+          "segment": 1,
+          "clip_time": 27.0,
+          "render": "L015 [00:30.00-00:33.00] CAM Close-up on Maya's face as the door chime rings and Victor disappears into the rain.",
+          "speaker": "",
+          "text": "Close-up on Maya's face as the door chime rings and Victor disappears into the rain."
+        },
+        {
+          "episode": 1,
+          "id": "L016",
+          "kind": "action",
+          "segment": 1,
+          "clip_time": 30.0,
+          "render": "L016 [00:33.00-00:36.00] ACT Maya turns the photograph over. On the back, in her own handwriting: DON'T TRUST HIM.",
+          "speaker": "",
+          "text": "Maya turns the photograph over. On the back, in her own handwriting: DON'T TRUST HIM."
+        },
+        {
+          "episode": 1,
+          "id": "L017",
+          "kind": "sfx",
+          "segment": 1,
+          "clip_time": 32.0,
+          "render": "L017 [00:35.00-00:38.00] SFX Ominous low drone swells to a cliffhanger sting.",
+          "speaker": "",
+          "text": "Ominous low drone swells to a cliffhanger sting."
+        }
+      ],
+      "raw_candidate": {
+        "title": "You Buried the Wrong Sister",
+        "segments": [
+          {
+            "episode": 1,
+            "start_id": "L002",
+            "end_id": "L016"
+          }
+        ],
+        "hook_id": "L003",
+        "hook": "Victor slides a photo across the counter and says, 'You buried the wrong sister.' (L003)",
+        "cliffhanger_id": "L016",
+        "cliffhanger": "Maya turns the photo over; the back reads 'DON'T TRUST HIM' in her own handwriting. (L016)",
+        "why_it_works": "Opens on the single most arresting line in the episode — a direct, impossible accusation that forces a stranger to stop scrolling. The clip then escalates cleanly: photo proof of the living twin with today's newspaper, Victor's cold threat ('She wants your life back'), Maya shattering a coffee pot in raw panic, the coffin/box revelation, the midnight pier meet-up, Victor's ambiguous exit, and finally the handwritten note that reframes everything. Every beat is visual, high-stakes, and comprehensible without prior context.",
+        "stranger_view": "A waitress is told the sister she mourned is alive and coming for her life. A photo proves it. The stranger who delivered the news may be the enemy. The clip ends on a note in the waitress's own writing warning her not to trust him. Who is the twin? Who is Victor? Why did she write that note? The questions are immediate and visceral.",
+        "evidence_ids": [
+          "L002",
+          "L003",
+          "L005",
+          "L006",
+          "L007",
+          "L010",
+          "L012",
+          "L014",
+          "L016"
+        ],
+        "scores": {
+          "hook": {
+            "score": 5,
+            "reason": "The line 'You buried the wrong sister' lands at 3.2s (clip starts at 3.0s on L002). It is a flat-out impossible accusation delivered with menace — zero context needed, maximum scroll-stop power."
+          },
+          "cliffhanger": {
+            "score": 5,
+            "reason": "Cuts exactly on the reveal of 'DON'T TRUST HIM' in Maya's handwriting. It reframes Victor's visit, implies Maya knew or wrote it earlier, and leaves the twin's status, Victor's allegiance, and Maya's next move all wide open."
+          },
+          "standalone": {
+            "score": 4,
+            "reason": "A first-time viewer grasps the core conflict: Maya buried her twin, a stranger proves the twin is alive and threatening, and Maya has a mysterious self-written warning. Victor's identity and the note's origin remain mysteries (intentional), but the stakes and sides are clear."
+          },
+          "emotion_curiosity": {
+            "score": 5,
+            "reason": "Combines shock (wrong sister), dread (twin wants her life), visceral action (shattering pot), intellectual puzzle (coffin vs box, the note), and paranoia (Victor's 'Who said I was helping?'). The curiosity gap is massive."
+          },
+          "visual": {
+            "score": 4,
+            "reason": "Tight close-ups (Maya freezing, photo insert, pot smash, photo turn-over), readable text (newspaper date, handwritten note), and physical action. The diner setting is simple but the compositions are phone-friendly. Only the medium shots of Victor buttoning his coat are less striking."
+          },
+          "spoiler_safety": {
+            "score": 4,
+            "reason": "Reveals the series premise (twin alive) which is public from the logline/title. The handwritten note is the episode's own cliffhanger, not a future twist. No payoff from Ep 2+ is given. The only risk is showing the episode's final sting, but that is the promo's job."
+          }
+        },
+        "context_dependencies": [
+          "Victor's true allegiance and employer are unknown — the clip leans into that ambiguity.",
+          "The origin of the 'DON'T TRUST HIM' note (when/why Maya wrote it) is not explained and requires future episodes.",
+          "The twin's identity, motives, and current situation are entirely unseen."
+        ],
+        "spoiler_risk": "low",
+        "spoiler_note": "Shows the episode's central revelation and its final cliffhanger image. Both are premise-level hooks for the series, not resolutions of later arcs.",
+        "weaknesses": [
+          "The episode is only 39s long; the promo uses 33s of it, leaving almost no room for pacing breaths or music cues.",
+          "Victor's 'Midnight. The old pier. Come alone.' setup pays off in Ep 2 — a viewer who watches only this promo won't see the payoff, but the line works as a standalone threat.",
+          "The handwritten note twist is so strong it may raise expectations the show must deliver on quickly."
+        ],
+        "confidence": "high"
+      },
+      "score": {
+        "base": 91.2,
+        "penalties": [],
+        "total": 91.2,
+        "weights": {
+          "hook": 0.25,
+          "cliffhanger": 0.25,
+          "standalone": 0.2,
+          "emotion_curiosity": 0.15,
+          "visual": 0.08,
+          "spoiler_safety": 0.07
+        }
+      },
+      "confidence": "high",
+      "confidence_reasons": [
+        "model self-rated high",
+        "cold-viewer review agrees"
+      ],
+      "review_flags": [],
+      "needs_human_review": false,
+      "duplicate_of": null,
+      "overall_rank": 1,
+      "shortlist_rank": 1,
+      "cold_viewer": {
+        "status": "ok",
+        "result": {
+          "what_i_understood": "A waitress named Maya is confronted by a mysterious man in a grey suit (Victor) who slides a photo across the counter and claims she buried the wrong sister — that her twin is actually alive, proven by a photo with today's newspaper. Maya insists she watched the coffin lowered. Victor says she only watched a box get lowered, gives her a midnight meeting at the old pier, and when she asks why he's helping, he smiles and says 'Who said I was?' The clip ends with Maya finding a note in her own handwriting on the back of the photo: 'DON'T TRUST HIM.'",
+          "confusing_points": [
+            "Who is Victor and how does he know about Maya's sister?",
+            "How could the sister be alive if Maya attended the funeral and burial?",
+            "Why does Maya have a note in her own handwriting that she doesn't remember writing?",
+            "Is Victor a threat, an ally, or something else entirely?"
+          ],
+          "first_3_seconds_stop_scrolling": 5,
+          "first_3_seconds_reason": "The opening line 'You buried the wrong sister' is an instant hook — high personal stakes, supernatural or conspiracy implication, and immediate mystery. The close-up on Maya freezing and the photo slide create visual tension before any dialogue. It's the kind of logline-level concept that stops a scroll cold.",
+          "ending_leaves_open_question": true,
+          "open_question": "Is the sister really alive, and if so, who wrote the warning note in Maya's handwriting — and why doesn't she remember?",
+          "could_follow_without_context": true,
+          "would_watch_next_episode": 5
+        },
+        "reviewer": "openai_compatible:nvidia/nemotron-3-ultra-550b-a55b"
+      }
+    },
+    {
+      "id": "E02-C1",
+      "origin": "model",
+      "episodes": [
+        2
+      ],
+      "title": "Twin Reveal to Blackmail Threat",
+      "segments": [
+        {
+          "episode": 2,
+          "start_id": "L004",
+          "end_id": "L012",
+          "start": 9.0,
+          "end": 34.0,
+          "start_tc": "00:09.00",
+          "end_tc": "00:34.00",
+          "duration": 25.0
+        }
+      ],
+      "metrics": {
+        "total_duration": 25.0,
+        "segments": 1,
+        "hook_offset": 0.0,
+        "cliffhanger_tail": 0.0,
+        "first_beat_offset": 3.2,
+        "first_dialogue_offset": 3.2,
+        "dialogue_lines": 6,
+        "speakers": 2,
+        "longest_gap_without_dialogue": 6.0
+      },
+      "hook": "Over-the-shoulder reveal of a woman with Maya's exact face standing at the far end of a foggy pier — immediate visual proof the 'dead' twin is alive.",
+      "hook_line": "L004 [00:09.00-00:12.00] CAM Over-the-shoulder shot revealing a woman with Maya's face at the far end of the pier.",
+      "cliffhanger": "Elena smiles, holds up a ring engraved with Maya's initials, and says: 'Then the police find this beside his body.' — explicit frame-up threat leaving Maya's choice and the husband's fate hanging.",
+      "cliffhanger_line": "L012 [00:31.00-00:34.00] DIA ELENA (Smiling): \"Then the police find this beside his body.\"",
+      "why_it_works": "Opens on the scroll-stopping twin reveal (zero context needed), escalates through emotional accusation ('You let me grieve you for a year!') and a brutal betrayal reveal ('I let you keep my husband warm for a year'), then lands a concrete blackmail threat with physical evidence (the ring). A stranger understands: twin returned, husband stolen, life now held hostage. All in 25 seconds.",
+      "stranger_view": "A woman meets her identical twin she thought dead. The twin calmly admits she let the protagonist mourn for a year while taking her husband. Now she demands everything back — or she'll plant evidence framing the protagonist for the husband's murder. Clear sides, clear stakes, zero backstory required.",
+      "evidence": [
+        {
+          "episode": 2,
+          "id": "L004",
+          "render": "L004 [00:09.00-00:12.00] CAM Over-the-shoulder shot revealing a woman with Maya's face at the far end of the pier.",
+          "inside_clip": true
+        },
+        {
+          "episode": 2,
+          "id": "L006",
+          "render": "L006 [00:15.00-00:17.00] DIA MAYA (Breaking): \"You let me grieve you for a year!\"",
+          "inside_clip": true
+        },
+        {
+          "episode": 2,
+          "id": "L007",
+          "render": "L007 [00:17.50-00:21.00] DIA ELENA (Cold): \"I let you keep my husband warm for a year.\"",
+          "inside_clip": true
+        },
+        {
+          "episode": 2,
+          "id": "L011",
+          "render": "L011 [00:28.50-00:31.00] CAM Close-up on Elena raising a ring with Maya's initials engraved inside.",
+          "inside_clip": true
+        },
+        {
+          "episode": 2,
+          "id": "L012",
+          "render": "L012 [00:31.00-00:34.00] DIA ELENA (Smiling): \"Then the police find this beside his body.\"",
+          "inside_clip": true
+        }
+      ],
+      "scores": {
+        "hook": {
+          "score": 5,
+          "reason": "Visual reveal of an identical twin on a foggy pier is instantly arresting — no dialogue needed, works mute, stops a scroll in under a second."
+        },
+        "cliffhanger": {
+          "score": 5,
+          "reason": "Cuts on a smiling villain holding murder-frame evidence, issuing an ultimatum. The protagonist's fate, the husband's life, and the ring's significance are all unresolved."
+        },
+        "standalone": {
+          "score": 4,
+          "reason": "The twin relationship, the year of grief, the husband theft, and the blackmail are all spoken or shown. Only minor gap: 'his body' refers to the husband, which is inferable but not explicitly labeled in-clip."
+        },
+        "emotion_curiosity": {
+          "score": 5,
+          "reason": "Grief, rage, cold betrayal, and a life-or-death ultimatum packed into 25 seconds. Viewer asks: Will Maya comply? Is the husband already dead? What happens next?"
+        },
+        "visual": {
+          "score": 5,
+          "reason": "Foggy pier atmosphere, twin face reveal (tight over-shoulder), emotional close-ups, headlight flare, extreme close-up of engraved ring — all phone-readable and striking."
+        },
+        "spoiler_safety": {
+          "score": 4,
+          "reason": "Reveals the episode-2 conflict (husband as leverage, ring as frame-up tool) but not the series outcome. The show's public logline ('twin demands her life back') already signals the husband is contested."
+        }
+      },
+      "context_dependencies": [
+        "Viewer must accept the premise (established by show title/logline) that Maya believed her twin dead for a year."
+      ],
+      "spoiler_risk": "low",
+      "spoiler_note": "Exposes the blackmail mechanism (the ring) and the husband as target, which are the episode's central conflict, not the series' final twists.",
+      "weaknesses": [
+        "First 9 seconds of episode (establishing pier, Maya walking) are discarded — correct editorial choice but means the clip lacks geographic establishing context.",
+        "The husband never appears on screen; his stakes are only verbal."
+      ],
+      "model_confidence": "high",
+      "errors": [],
+      "warnings": [
+        {
+          "code": "camera_only_hook",
+          "message": "the claimed hook is a camera-framing description, not a line, action or sound a scroller would react to; check the opening actually lands",
+          "value": null
+        },
+        {
+          "code": "dead_air_open",
+          "message": "nothing but camera movement for the first 3.2s",
+          "value": 3.2
+        }
+      ],
+      "valid": true,
+      "transcript": [
+        {
+          "episode": 2,
+          "id": "L004",
+          "kind": "camera",
+          "segment": 1,
+          "clip_time": 0.0,
+          "render": "L004 [00:09.00-00:12.00] CAM Over-the-shoulder shot revealing a woman with Maya's face at the far end of the pier.",
+          "speaker": "",
+          "text": "Over-the-shoulder shot revealing a woman with Maya's face at the far end of the pier."
+        },
+        {
+          "episode": 2,
+          "id": "L005",
+          "kind": "dialogue",
+          "segment": 1,
+          "clip_time": 3.2,
+          "render": "L005 [00:12.20-00:14.50] DIA ELENA (Calm): \"Hello, sister. You look tired.\"",
+          "speaker": "ELENA",
+          "text": "\"Hello, sister. You look tired.\""
+        },
+        {
+          "episode": 2,
+          "id": "L006",
+          "kind": "dialogue",
+          "segment": 1,
+          "clip_time": 6.0,
+          "render": "L006 [00:15.00-00:17.00] DIA MAYA (Breaking): \"You let me grieve you for a year!\"",
+          "speaker": "MAYA",
+          "text": "\"You let me grieve you for a year!\""
+        },
+        {
+          "episode": 2,
+          "id": "L007",
+          "kind": "dialogue",
+          "segment": 1,
+          "clip_time": 8.5,
+          "render": "L007 [00:17.50-00:21.00] DIA ELENA (Cold): \"I let you keep my husband warm for a year.\"",
+          "speaker": "ELENA",
+          "text": "\"I let you keep my husband warm for a year.\""
+        },
+        {
+          "episode": 2,
+          "id": "L008",
+          "kind": "action",
+          "segment": 1,
+          "clip_time": 12.0,
+          "render": "L008 [00:21.00-00:23.00] ACT Maya steps back as headlights flare behind Elena.",
+          "speaker": "",
+          "text": "Maya steps back as headlights flare behind Elena."
+        },
+        {
+          "episode": 2,
+          "id": "L009",
+          "kind": "dialogue",
+          "segment": 1,
+          "clip_time": 14.5,
+          "render": "L009 [00:23.50-00:26.00] DIA ELENA (Commanding): \"Tonight, you give it all back.\"",
+          "speaker": "ELENA",
+          "text": "\"Tonight, you give it all back.\""
+        },
+        {
+          "episode": 2,
+          "id": "L010",
+          "kind": "dialogue",
+          "segment": 1,
+          "clip_time": 17.5,
+          "render": "L010 [00:26.50-00:28.50] DIA MAYA (Defiant): \"And if I refuse?\"",
+          "speaker": "MAYA",
+          "text": "\"And if I refuse?\""
+        },
+        {
+          "episode": 2,
+          "id": "L011",
+          "kind": "camera",
+          "segment": 1,
+          "clip_time": 19.5,
+          "render": "L011 [00:28.50-00:31.00] CAM Close-up on Elena raising a ring with Maya's initials engraved inside.",
+          "speaker": "",
+          "text": "Close-up on Elena raising a ring with Maya's initials engraved inside."
+        },
+        {
+          "episode": 2,
+          "id": "L012",
+          "kind": "dialogue",
+          "segment": 1,
+          "clip_time": 22.0,
+          "render": "L012 [00:31.00-00:34.00] DIA ELENA (Smiling): \"Then the police find this beside his body.\"",
+          "speaker": "ELENA",
+          "text": "\"Then the police find this beside his body.\""
+        }
+      ],
+      "raw_candidate": {
+        "title": "Twin Reveal to Blackmail Threat",
+        "segments": [
+          {
+            "episode": 2,
+            "start_id": "L004",
+            "end_id": "L012"
+          }
+        ],
+        "hook_id": "L004",
+        "hook": "Over-the-shoulder reveal of a woman with Maya's exact face standing at the far end of a foggy pier — immediate visual proof the 'dead' twin is alive.",
+        "cliffhanger_id": "L012",
+        "cliffhanger": "Elena smiles, holds up a ring engraved with Maya's initials, and says: 'Then the police find this beside his body.' — explicit frame-up threat leaving Maya's choice and the husband's fate hanging.",
+        "why_it_works": "Opens on the scroll-stopping twin reveal (zero context needed), escalates through emotional accusation ('You let me grieve you for a year!') and a brutal betrayal reveal ('I let you keep my husband warm for a year'), then lands a concrete blackmail threat with physical evidence (the ring). A stranger understands: twin returned, husband stolen, life now held hostage. All in 25 seconds.",
+        "stranger_view": "A woman meets her identical twin she thought dead. The twin calmly admits she let the protagonist mourn for a year while taking her husband. Now she demands everything back — or she'll plant evidence framing the protagonist for the husband's murder. Clear sides, clear stakes, zero backstory required.",
+        "evidence_ids": [
+          "L004",
+          "L006",
+          "L007",
+          "L011",
+          "L012"
+        ],
+        "scores": {
+          "hook": {
+            "score": 5,
+            "reason": "Visual reveal of an identical twin on a foggy pier is instantly arresting — no dialogue needed, works mute, stops a scroll in under a second."
+          },
+          "cliffhanger": {
+            "score": 5,
+            "reason": "Cuts on a smiling villain holding murder-frame evidence, issuing an ultimatum. The protagonist's fate, the husband's life, and the ring's significance are all unresolved."
+          },
+          "standalone": {
+            "score": 4,
+            "reason": "The twin relationship, the year of grief, the husband theft, and the blackmail are all spoken or shown. Only minor gap: 'his body' refers to the husband, which is inferable but not explicitly labeled in-clip."
+          },
+          "emotion_curiosity": {
+            "score": 5,
+            "reason": "Grief, rage, cold betrayal, and a life-or-death ultimatum packed into 25 seconds. Viewer asks: Will Maya comply? Is the husband already dead? What happens next?"
+          },
+          "visual": {
+            "score": 5,
+            "reason": "Foggy pier atmosphere, twin face reveal (tight over-shoulder), emotional close-ups, headlight flare, extreme close-up of engraved ring — all phone-readable and striking."
+          },
+          "spoiler_safety": {
+            "score": 4,
+            "reason": "Reveals the episode-2 conflict (husband as leverage, ring as frame-up tool) but not the series outcome. The show's public logline ('twin demands her life back') already signals the husband is contested."
+          }
+        },
+        "context_dependencies": [
+          "Viewer must accept the premise (established by show title/logline) that Maya believed her twin dead for a year."
+        ],
+        "spoiler_risk": "low",
+        "spoiler_note": "Exposes the blackmail mechanism (the ring) and the husband as target, which are the episode's central conflict, not the series' final twists.",
+        "weaknesses": [
+          "First 9 seconds of episode (establishing pier, Maya walking) are discarded — correct editorial choice but means the clip lacks geographic establishing context.",
+          "The husband never appears on screen; his stakes are only verbal."
+        ],
+        "confidence": "high"
+      },
+      "score": {
+        "base": 93.2,
+        "penalties": [
+          {
+            "code": "camera_only_hook",
+            "points": 4.0,
+            "reason": "the claimed hook is a camera-framing description, not a line, action or sound a scroller would react to; check the opening actually lands"
+          },
+          {
+            "code": "dead_air_open",
+            "points": 5.0,
+            "reason": "nothing but camera movement for the first 3.2s"
+          }
+        ],
+        "total": 84.2,
+        "weights": {
+          "hook": 0.25,
+          "cliffhanger": 0.25,
+          "standalone": 0.2,
+          "emotion_curiosity": 0.15,
+          "visual": 0.08,
+          "spoiler_safety": 0.07
+        }
+      },
+      "confidence": "medium",
+      "confidence_reasons": [
+        "model self-rated high",
+        "-1: dead_air_open"
+      ],
+      "review_flags": [],
+      "needs_human_review": false,
+      "duplicate_of": "M1",
+      "duplicate_reason": "86% of the shorter clip's screen time is shared",
+      "why_lower": [
+        "near-duplicate of M1: 86% of the shorter clip's screen time is shared"
+      ]
+    },
+    {
+      "id": "M1",
+      "origin": "montage",
+      "episodes": [
+        1,
+        2
+      ],
+      "title": "Wrong Sister / Wrong Life",
+      "segments": [
+        {
+          "episode": 1,
+          "start_id": "L002",
+          "end_id": "L006",
+          "start": 3.0,
+          "end": 9.8,
+          "start_tc": "00:03.00",
+          "end_tc": "00:09.80",
+          "duration": 6.8
+        },
+        {
+          "episode": 2,
+          "start_id": "L004",
+          "end_id": "L008",
+          "start": 9.0,
+          "end": 23.0,
+          "start_tc": "00:09.00",
+          "end_tc": "00:23.00",
+          "duration": 14.0
+        },
+        {
+          "episode": 2,
+          "start_id": "L010",
+          "end_id": "L012",
+          "start": 26.5,
+          "end": 34.0,
+          "start_tc": "00:26.50",
+          "end_tc": "00:34.00",
+          "duration": 7.5
+        }
+      ],
+      "metrics": {
+        "total_duration": 28.3,
+        "segments": 3,
+        "hook_offset": 0.2,
+        "cliffhanger_tail": 0.0,
+        "first_beat_offset": 0.2,
+        "first_dialogue_offset": 0.2,
+        "dialogue_lines": 8,
+        "speakers": 3,
+        "longest_gap_without_dialogue": 6.0
+      },
+      "hook": "Victor slides a photo across the counter and says, 'You buried the wrong sister.'",
+      "hook_line": "L003 [00:03.20-00:05.00] DIA VICTOR (Low, Menacing): \"You buried the wrong sister.\"",
+      "cliffhanger": "Elena holds up a ring engraved with Maya's initials and says, 'Then the police find this beside his body.'",
+      "cliffhanger_line": "L012 [00:31.00-00:34.00] DIA ELENA (Smiling): \"Then the police find this beside his body.\"",
+      "why_it_works": "The montage chains the inciting revelation (E01) directly into the payoff confrontation (E02), delivering the show's entire hook — twin switched, husband stolen, frame-up looming — in under 60 seconds. The cut from Victor's 'midnight pier' order to the actual pier reveal creates instant narrative momentum without any exposition.",
+      "stranger_view": "A stranger sees: 1) a waitress told the sister she buried is alive, 2) that sister appears on a foggy pier with the same face, 3) the sister admits she let the waitress 'keep her husband warm' and now threatens to plant evidence framing her for murder. Stakes, relationships, and the central threat are all visible.",
+      "evidence": [
+        {
+          "episode": 1,
+          "id": "L002",
+          "render": "L002 [00:03.00-00:05.00] CAM Close-up on MAYA, a waitress, freezing as a man in a grey suit slides a photograph across the counter.",
+          "inside_clip": true
+        },
+        {
+          "episode": 1,
+          "id": "L003",
+          "render": "L003 [00:03.20-00:05.00] DIA VICTOR (Low, Menacing): \"You buried the wrong sister.\"",
+          "inside_clip": true
+        },
+        {
+          "episode": 1,
+          "id": "L005",
+          "render": "L005 [00:06.60-00:09.00] CAM Insert on the photograph: Maya's twin, smiling, holding today's newspaper.",
+          "inside_clip": true
+        },
+        {
+          "episode": 1,
+          "id": "L006",
+          "render": "L006 [00:07.00-00:09.80] DIA VICTOR (Cold): \"She is alive. And she wants your life back.\"",
+          "inside_clip": true
+        },
+        {
+          "episode": 2,
+          "id": "L004",
+          "render": "L004 [00:09.00-00:12.00] CAM Over-the-shoulder shot revealing a woman with Maya's face at the far end of the pier.",
+          "inside_clip": true
+        },
+        {
+          "episode": 2,
+          "id": "L005",
+          "render": "L005 [00:12.20-00:14.50] DIA ELENA (Calm): \"Hello, sister. You look tired.\"",
+          "inside_clip": true
+        },
+        {
+          "episode": 2,
+          "id": "L007",
+          "render": "L007 [00:17.50-00:21.00] DIA ELENA (Cold): \"I let you keep my husband warm for a year.\"",
+          "inside_clip": true
+        },
+        {
+          "episode": 2,
+          "id": "L008",
+          "render": "L008 [00:21.00-00:23.00] ACT Maya steps back as headlights flare behind Elena.",
+          "inside_clip": true
+        },
+        {
+          "episode": 2,
+          "id": "L011",
+          "render": "L011 [00:28.50-00:31.00] CAM Close-up on Elena raising a ring with Maya's initials engraved inside.",
+          "inside_clip": true
+        },
+        {
+          "episode": 2,
+          "id": "L012",
+          "render": "L012 [00:31.00-00:34.00] DIA ELENA (Smiling): \"Then the police find this beside his body.\"",
+          "inside_clip": true
+        }
+      ],
+      "scores": {
+        "hook": {
+          "score": 5,
+          "reason": "Victor's line 'You buried the wrong sister' is a shocking accusation delivered with a photo proof; it stops a scroll instantly with zero context."
+        },
+        "cliffhanger": {
+          "score": 5,
+          "reason": "Elena's explicit frame-up threat — ring with Maya's initials, 'police find this beside his body' — leaves the husband's fate and Maya's choice completely open."
+        },
+        "standalone": {
+          "score": 5,
+          "reason": "Every beat is self-explanatory: photo proves twin alive, pier meeting confirms it, dialogue establishes husband theft, ring threat establishes murder frame. No prior knowledge needed."
+        },
+        "emotion_curiosity": {
+          "score": 5,
+          "reason": "Grief betrayal (Maya), cold manipulation (Elena), mortal danger (husband) — intense emotion plus a massive 'what happens next' gap at the cut."
+        },
+        "visual": {
+          "score": 5,
+          "reason": "Tight faces (Victor, Maya, Elena), photo insert, shattering coffee pot, foggy pier reveal, headlight flare, ring close-up — all striking, phone-readable images."
+        },
+        "spoiler_safety": {
+          "score": 4,
+          "reason": "Reveals premise-level twists (twin alive, husband stolen, blackmail) but not the resolution. The show title already signals the twin swap; the frame-up is the engine of the series, not its payoff."
+        }
+      },
+      "context_dependencies": [],
+      "spoiler_risk": "low",
+      "spoiler_note": "Only premise-level reveals; the central mystery (who is Victor, why the note in Maya's handwriting, what happens at midnight) remains intact.",
+      "weaknesses": [
+        "Requires a clean audio bridge over the episode boundary (Victor's 'midnight pier' line to pier ambience).",
+        "Elena's 'husband' line assumes viewer infers the man is Maya's husband — clear but not explicit."
+      ],
+      "model_confidence": "high",
+      "errors": [],
+      "warnings": [],
+      "valid": true,
+      "transcript": [
+        {
+          "episode": 1,
+          "id": "L002",
+          "kind": "camera",
+          "segment": 1,
+          "clip_time": 0.0,
+          "render": "L002 [00:03.00-00:05.00] CAM Close-up on MAYA, a waitress, freezing as a man in a grey suit slides a photograph across the counter.",
+          "speaker": "",
+          "text": "Close-up on MAYA, a waitress, freezing as a man in a grey suit slides a photograph across the counter."
+        },
+        {
+          "episode": 1,
+          "id": "L003",
+          "kind": "dialogue",
+          "segment": 1,
+          "clip_time": 0.2,
+          "render": "L003 [00:03.20-00:05.00] DIA VICTOR (Low, Menacing): \"You buried the wrong sister.\"",
+          "speaker": "VICTOR",
+          "text": "\"You buried the wrong sister.\""
+        },
+        {
+          "episode": 1,
+          "id": "L004",
+          "kind": "dialogue",
+          "segment": 1,
+          "clip_time": 2.4,
+          "render": "L004 [00:05.40-00:06.60] DIA MAYA (Stunned): \"What did you say?\"",
+          "speaker": "MAYA",
+          "text": "\"What did you say?\""
+        },
+        {
+          "episode": 1,
+          "id": "L005",
+          "kind": "camera",
+          "segment": 1,
+          "clip_time": 3.6,
+          "render": "L005 [00:06.60-00:09.00] CAM Insert on the photograph: Maya's twin, smiling, holding today's newspaper.",
+          "speaker": "",
+          "text": "Insert on the photograph: Maya's twin, smiling, holding today's newspaper."
+        },
+        {
+          "episode": 1,
+          "id": "L006",
+          "kind": "dialogue",
+          "segment": 1,
+          "clip_time": 4.0,
+          "render": "L006 [00:07.00-00:09.80] DIA VICTOR (Cold): \"She is alive. And she wants your life back.\"",
+          "speaker": "VICTOR",
+          "text": "\"She is alive. And she wants your life back.\""
+        },
+        {
+          "episode": 2,
+          "id": "L004",
+          "kind": "camera",
+          "segment": 2,
+          "clip_time": 6.8,
+          "render": "L004 [00:09.00-00:12.00] CAM Over-the-shoulder shot revealing a woman with Maya's face at the far end of the pier.",
+          "speaker": "",
+          "text": "Over-the-shoulder shot revealing a woman with Maya's face at the far end of the pier."
+        },
+        {
+          "episode": 2,
+          "id": "L005",
+          "kind": "dialogue",
+          "segment": 2,
+          "clip_time": 10.0,
+          "render": "L005 [00:12.20-00:14.50] DIA ELENA (Calm): \"Hello, sister. You look tired.\"",
+          "speaker": "ELENA",
+          "text": "\"Hello, sister. You look tired.\""
+        },
+        {
+          "episode": 2,
+          "id": "L006",
+          "kind": "dialogue",
+          "segment": 2,
+          "clip_time": 12.8,
+          "render": "L006 [00:15.00-00:17.00] DIA MAYA (Breaking): \"You let me grieve you for a year!\"",
+          "speaker": "MAYA",
+          "text": "\"You let me grieve you for a year!\""
+        },
+        {
+          "episode": 2,
+          "id": "L007",
+          "kind": "dialogue",
+          "segment": 2,
+          "clip_time": 15.3,
+          "render": "L007 [00:17.50-00:21.00] DIA ELENA (Cold): \"I let you keep my husband warm for a year.\"",
+          "speaker": "ELENA",
+          "text": "\"I let you keep my husband warm for a year.\""
+        },
+        {
+          "episode": 2,
+          "id": "L008",
+          "kind": "action",
+          "segment": 2,
+          "clip_time": 18.8,
+          "render": "L008 [00:21.00-00:23.00] ACT Maya steps back as headlights flare behind Elena.",
+          "speaker": "",
+          "text": "Maya steps back as headlights flare behind Elena."
+        },
+        {
+          "episode": 2,
+          "id": "L010",
+          "kind": "dialogue",
+          "segment": 3,
+          "clip_time": 20.8,
+          "render": "L010 [00:26.50-00:28.50] DIA MAYA (Defiant): \"And if I refuse?\"",
+          "speaker": "MAYA",
+          "text": "\"And if I refuse?\""
+        },
+        {
+          "episode": 2,
+          "id": "L011",
+          "kind": "camera",
+          "segment": 3,
+          "clip_time": 22.8,
+          "render": "L011 [00:28.50-00:31.00] CAM Close-up on Elena raising a ring with Maya's initials engraved inside.",
+          "speaker": "",
+          "text": "Close-up on Elena raising a ring with Maya's initials engraved inside."
+        },
+        {
+          "episode": 2,
+          "id": "L012",
+          "kind": "dialogue",
+          "segment": 3,
+          "clip_time": 25.3,
+          "render": "L012 [00:31.00-00:34.00] DIA ELENA (Smiling): \"Then the police find this beside his body.\"",
+          "speaker": "ELENA",
+          "text": "\"Then the police find this beside his body.\""
+        }
+      ],
+      "raw_candidate": {
+        "title": "Wrong Sister / Wrong Life",
+        "segments": [
+          {
+            "episode": 1,
+            "start_id": "E01-L002",
+            "end_id": "E01-L006"
+          },
+          {
+            "episode": 2,
+            "start_id": "E02-L004",
+            "end_id": "E02-L008"
+          },
+          {
+            "episode": 2,
+            "start_id": "E02-L010",
+            "end_id": "E02-L012"
+          }
+        ],
+        "hook_id": "E01-L003",
+        "hook": "Victor slides a photo across the counter and says, 'You buried the wrong sister.'",
+        "cliffhanger_id": "E02-L012",
+        "cliffhanger": "Elena holds up a ring engraved with Maya's initials and says, 'Then the police find this beside his body.'",
+        "why_it_works": "The montage chains the inciting revelation (E01) directly into the payoff confrontation (E02), delivering the show's entire hook — twin switched, husband stolen, frame-up looming — in under 60 seconds. The cut from Victor's 'midnight pier' order to the actual pier reveal creates instant narrative momentum without any exposition.",
+        "stranger_view": "A stranger sees: 1) a waitress told the sister she buried is alive, 2) that sister appears on a foggy pier with the same face, 3) the sister admits she let the waitress 'keep her husband warm' and now threatens to plant evidence framing her for murder. Stakes, relationships, and the central threat are all visible.",
+        "evidence_ids": [
+          "E01-L002",
+          "E01-L003",
+          "E01-L005",
+          "E01-L006",
+          "E02-L004",
+          "E02-L005",
+          "E02-L007",
+          "E02-L008",
+          "E02-L011",
+          "E02-L012"
+        ],
+        "scores": {
+          "hook": {
+            "score": 5,
+            "reason": "Victor's line 'You buried the wrong sister' is a shocking accusation delivered with a photo proof; it stops a scroll instantly with zero context."
+          },
+          "cliffhanger": {
+            "score": 5,
+            "reason": "Elena's explicit frame-up threat — ring with Maya's initials, 'police find this beside his body' — leaves the husband's fate and Maya's choice completely open."
+          },
+          "standalone": {
+            "score": 5,
+            "reason": "Every beat is self-explanatory: photo proves twin alive, pier meeting confirms it, dialogue establishes husband theft, ring threat establishes murder frame. No prior knowledge needed."
+          },
+          "emotion_curiosity": {
+            "score": 5,
+            "reason": "Grief betrayal (Maya), cold manipulation (Elena), mortal danger (husband) — intense emotion plus a massive 'what happens next' gap at the cut."
+          },
+          "visual": {
+            "score": 5,
+            "reason": "Tight faces (Victor, Maya, Elena), photo insert, shattering coffee pot, foggy pier reveal, headlight flare, ring close-up — all striking, phone-readable images."
+          },
+          "spoiler_safety": {
+            "score": 4,
+            "reason": "Reveals premise-level twists (twin alive, husband stolen, blackmail) but not the resolution. The show title already signals the twin swap; the frame-up is the engine of the series, not its payoff."
+          }
+        },
+        "context_dependencies": [],
+        "spoiler_risk": "low",
+        "spoiler_note": "Only premise-level reveals; the central mystery (who is Victor, why the note in Maya's handwriting, what happens at midnight) remains intact.",
+        "weaknesses": [
+          "Requires a clean audio bridge over the episode boundary (Victor's 'midnight pier' line to pier ambience).",
+          "Elena's 'husband' line assumes viewer infers the man is Maya's husband — clear but not explicit."
+        ],
+        "confidence": "high"
+      },
+      "score": {
+        "base": 98.2,
+        "penalties": [
+          {
+            "code": "extra_segments",
+            "points": 6.0,
+            "reason": "3 segments (continuous clips preferred)"
+          },
+          {
+            "code": "cross_episode",
+            "points": 3.0,
+            "reason": "joins episodes [1, 2]; harder to follow without overlays"
+          }
+        ],
+        "total": 89.2,
+        "weights": {
+          "hook": 0.25,
+          "cliffhanger": 0.25,
+          "standalone": 0.2,
+          "emotion_curiosity": 0.15,
+          "visual": 0.08,
+          "spoiler_safety": 0.07
+        }
+      },
+      "confidence": "medium",
+      "confidence_reasons": [
+        "model self-rated high",
+        "-1: cold-viewer review disagrees with the editorial scores"
+      ],
+      "review_flags": [],
+      "needs_human_review": false,
+      "duplicate_of": null,
+      "overall_rank": 2,
+      "shortlist_rank": 2,
+      "cold_viewer": {
+        "status": "ok",
+        "result": {
+          "what_i_understood": "Maya is a waitress confronted by a man named Victor who slides a photo across the counter showing her twin sister Elena alive, holding today's newspaper. Elena appears at the pier and reveals she's been alive for a year while Maya grieved her. Elena claims Maya has been with her husband, and threatens to plant a ring with Maya's initials beside his body if Maya doesn't comply with whatever Elena wants.",
+          "confusing_points": [
+            "Who is Victor and what's his relationship to Elena/Maya?",
+            "Who is 'he' / the husband - Elena's husband that Maya has been keeping warm?",
+            "Why was Elena presumed dead and buried a year ago?",
+            "What exactly does Elena want Maya to do ('wants your life back')?",
+            "Is the husband dead already or is Elena threatening to kill him?"
+          ],
+          "first_3_seconds_stop_scrolling": 1,
+          "first_3_seconds_reason": "The line 'You buried the wrong sister' is an immediate, high-stakes hook that raises instant questions about identity, death, and deception. The close-up on Maya freezing sells the shock. I'd keep watching to see the photo and hear her reaction.",
+          "ending_leaves_open_question": true,
+          "open_question": "Will Maya submit to Elena's blackmail, and what exactly does Elena want her to do? Also, is the husband already dead or is this a setup for murder?",
+          "could_follow_without_context": true,
+          "would_watch_next_episode": 5
+        },
+        "reviewer": "openai_compatible:nvidia/nemotron-3-ultra-550b-a55b"
+      }
+    }
+  ],
+  "rejected": [],
+  "ranking": {
+    "shortlist": [
+      "E01-C1",
+      "M1"
+    ],
+    "alternatives": [],
+    "duplicates": [
+      "E02-C1"
+    ],
+    "ranked": [
+      "E01-C1",
+      "M1"
+    ]
+  }
+}

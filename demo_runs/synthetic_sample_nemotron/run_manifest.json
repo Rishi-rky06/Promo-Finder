@@ -1,0 +1,214 @@
+{
+  "tool": "promo-finder",
+  "version": "1.0.0",
+  "started_utc": "2026-11-07T21:28:25+00:00",
+  "finished_utc": "2026-11-07T21:28:28+00:00",
+  "elapsed_s": 2.9,
+  "status": "complete",
+  "input": "samples/synthetic_show",
+  "show_title": "synthetic_show",
+  "episodes_found": 2,
+  "episodes_mined_ok": 2,
+  "episodes_pending": [],
+  "episodes_failed": [],
+  "skipped_files": [
+    {
+      "file": "README.txt",
+      "reason": "no timed screenplay blocks found"
+    }
+  ],
+  "provider": "openai_compatible",
+  "provider_detail": "openai_compatible:nvidia/nemotron-3-ultra-550b-a55b",
+  "responder": null,
+  "stages": {
+    "montage": "ok",
+    "cold_viewer": "ok"
+  },
+  "tasks_pending": [],
+  "tasks_failed": [],
+  "counts": {
+    "candidates_valid": 3,
+    "candidates_rejected": 0,
+    "montages_valid": 1,
+    "shortlist": 2,
+    "alternatives": 0,
+    "duplicates": 1
+  },
+  "usage_measured": {
+    "input_tokens": 9036,
+    "output_tokens": 12208
+  },
+  "cost_estimate": {
+    "pricing_model": "claude-opus-5-5",
+    "note": "Provider is openai_compatible, not billed here. hypothetical_usd_at_listed_price is what these measured tokens would cost at claude-opus-5-5 list prices, for comparison only.",
+    "measured_tokens": {
+      "input": 9036,
+      "output_incl_thinking": 12208
+    },
+    "hypothetical_usd_at_listed_price": 0.28
+  },
+  "tasks": [
+    {
+      "task_id": "mine_E01",
+      "stage": "mine",
+      "status": "ok",
+      "error": null,
+      "usage": {
+        "input_tokens": 2520,
+        "output_tokens": 5196
+      },
+      "cached": true,
+      "elapsed_s": 0.0,
+      "prompt_chars": 5592,
+      "response_chars": 5032,
+      "model": "nvidia/nemotron-3-ultra-550b-a55b",
+      "provider": "openai_compatible"
+    },
+    {
+      "task_id": "mine_E02",
+      "stage": "mine",
+      "status": "ok",
+      "error": null,
+      "usage": {
+        "input_tokens": 2322,
+        "output_tokens": 3233
+      },
+      "cached": true,
+      "elapsed_s": 0.0,
+      "prompt_chars": 5143,
+      "response_chars": 4249,
+      "model": "nvidia/nemotron-3-ultra-550b-a55b",
+      "provider": "openai_compatible"
+    },
+    {
+      "task_id": "montage",
+      "stage": "montage",
+      "status": "ok",
+      "error": null,
+      "usage": {
+        "input_tokens": 2647,
+        "output_tokens": 1867
+      },
+      "cached": true,
+      "elapsed_s": 0.0,
+      "prompt_chars": 5272,
+      "response_chars": 4050,
+      "model": "nvidia/nemotron-3-ultra-550b-a55b",
+      "provider": "openai_compatible"
+    },
+    {
+      "task_id": "review_E01-C1",
+      "stage": "cold_viewer",
+      "status": "ok",
+      "error": null,
+      "usage": {
+        "input_tokens": 805,
+        "output_tokens": 898
+      },
+      "cached": true,
+      "elapsed_s": 0.0,
+      "prompt_chars": 1816,
+      "response_chars": 1540,
+      "model": "nvidia/nemotron-3-ultra-550b-a55b",
+      "provider": "openai_compatible"
+    },
+    {
+      "task_id": "review_M1",
+      "stage": "cold_viewer",
+      "status": "ok",
+      "error": null,
+      "usage": {
+        "input_tokens": 742,
+        "output_tokens": 1014
+      },
+      "cached": true,
+      "elapsed_s": 0.0,
+      "prompt_chars": 1646,
+      "response_chars": 1411,
+      "model": "nvidia/nemotron-3-ultra-550b-a55b",
+      "provider": "openai_compatible"
+    }
+  ],
+  "config": {
+    "provider": {
+      "name": "openai_compatible",
+      "workers": 4,
+      "cache_dir": ".cache/model_responses",
+      "anthropic": {
+        "model": "claude-opus-5-5",
+        "effort": "medium",
+        "max_tokens": 16000,
+        "use_refusal_fallback": true
+      },
+      "openai_compatible": {
+        "base_url": "https://integrate.api.nvidia.com/v1",
+        "api_key_env": "NVIDIA_API_KEY",
+        "model": "nvidia/nemotron-3-ultra-550b-a55b",
+        "json_mode": "prompt",
+        "max_tokens": 16000,
+        "temperature": 0.2
+      },
+      "file": {
+        "exchange_dir": ""
+      }
+    },
+    "promo": {
+      "min_seconds": 20.0,
+      "max_seconds": 60.0,
+      "hook_window_seconds": 3.0,
+      "cliffhanger_tail_seconds": 4.0,
+      "max_segments": 3,
+      "candidates_per_episode": 3,
+      "dead_air_open_seconds": 2.5,
+      "repair_attempts": 1
+    },
+    "weights": {
+      "hook": 0.25,
+      "cliffhanger": 0.25,
+      "standalone": 0.2,
+      "emotion_curiosity": 0.15,
+      "visual": 0.08,
+      "spoiler_safety": 0.07
+    },
+    "penalties": {
+      "late_hook": 12.0,
+      "cut_after_cliffhanger": 6.0,
+      "dead_air_open": 5.0,
+      "camera_only_hook": 4.0,
+      "per_extra_segment": 3.0,
+      "cross_episode": 3.0,
+      "boundary_adjusted": 1.0,
+      "cold_viewer_confused": 8.0,
+      "episode_depth_per_10": 0.0
+    },
+    "ranking": {
+      "shortlist_size": 10,
+      "max_per_episode_in_shortlist": 1,
+      "same_episode_overlap": 0.5,
+      "text_similarity": 0.6
+    },
+    "review": {
+      "cold_viewer": true,
+      "cold_viewer_top_n": 40
+    },
+    "montage": {
+      "enabled": true,
+      "source_candidates": 20,
+      "max_montages": 3
+    },
+    "pricing": {
+      "claude-opus-5-5": {
+        "input": 4.0,
+        "output": 20.0
+      },
+      "claude-sonnet-5-5": {
+        "input": 2.0,
+        "output": 10.0
+      },
+      "claude-haiku-5-5": {
+        "input": 0.1,
+        "output": 0.5
+      }
+    }
+  }
+}

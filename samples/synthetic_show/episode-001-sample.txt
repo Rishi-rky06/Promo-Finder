@@ -1,0 +1,86 @@
+EPISODE NUMBER: Episode 1
+EPISODE LOGLINE: A waitress learns from a stranger that the twin sister she buried is alive.
+CONTINUITY NOTES: First episode.
+
+--- SCRIPT START ---
+
+SCENE 01
+Scene heading: INT. ROOFTOP DINER - NIGHT
+Scene start: 00:00.00
+Scene end: 00:39.00
+
+Actions and dialogue:
+
+**CAMERA:**
+Start: (00:00.00) | End: (00:03.00)
+Wide shot of a rain-soaked rooftop diner sign flickering at night.
+
+**CAMERA:**
+Start: (00:03.00) | End: (00:05.00)
+Close-up on MAYA, a waitress, freezing as a man in a grey suit slides a photograph across the counter.
+
+**VICTOR (Low, Menacing):**
+Start: (00:03.20) | End: (00:05.00)
+"You buried the wrong sister."
+
+**MAYA (Stunned):**
+Start: (00:05.40) | End: (00:06.60)
+"What did you say?"
+
+**CAMERA:**
+Start: (00:06.60) | End: (00:09.00)
+Insert on the photograph: Maya's twin, smiling, holding today's newspaper.
+
+**VICTOR (Cold):**
+Start: (00:07.00) | End: (00:09.80)
+"She is alive. And she wants your life back."
+
+**ACTION:**
+Start: (00:10.00) | End: (00:12.00)
+Maya drops the coffee pot. It shatters across the tiles.
+
+**SOUND FX:**
+Start: (00:10.10) | End: (00:11.00)
+Sharp crash of shattering glass.
+
+**MAYA (Shaking):**
+Start: (00:12.50) | End: (00:15.00)
+"I watched them lower her coffin."
+
+**VICTOR (Amused):**
+Start: (00:15.40) | End: (00:18.00)
+"You watched them lower a box."
+
+**CAMERA:**
+Start: (00:18.00) | End: (00:21.00)
+Medium shot as Victor stands, buttoning his coat.
+
+**VICTOR (Quiet):**
+Start: (00:21.20) | End: (00:24.50)
+"Midnight. The old pier. Come alone."
+
+**MAYA (Desperate):**
+Start: (00:25.00) | End: (00:27.00)
+"Why are you helping me?"
+
+**VICTOR (Smiling):**
+Start: (00:27.50) | End: (00:30.00)
+"Who said I was?"
+
+**CAMERA:**
+Start: (00:30.00) | End: (00:33.00)
+Close-up on Maya's face as the door chime rings and Victor disappears into the rain.
+
+**ACTION:**
+Start: (00:33.00) | End: (00:36.00)
+Maya turns the photograph over. On the back, in her own handwriting: DON'T TRUST HIM.
+
+**SOUND FX:**
+Start: (00:35.00) | End: (00:38.00)
+Ominous low drone swells to a cliffhanger sting.
+
+**CAMERA:**
+Start: (00:38.00) | End: (00:39.00)
+Cut to black.
+
+--- SCRIPT END ---

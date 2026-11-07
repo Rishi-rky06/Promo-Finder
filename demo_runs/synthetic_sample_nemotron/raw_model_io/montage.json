@@ -1,0 +1,247 @@
+{
+  "task_id": "montage",
+  "stage": "montage",
+  "request": {
+    "system": "You are a senior short-form promo editor for a vertical microdrama app. Earlier analysis found the strongest\nsingle moments of the show (listed below with their transcripts; ids look like E03-L045 = episode 3, event L045).\nPropose up to 3 MONTAGE promos that join 2-3 segments from DIFFERENT episodes into one 20-60 second clip, the way\ntrailer-style promos sell a show's premise. Only propose a montage if it would clearly beat the single clips: each\ncut must make sense to a stranger with no text overlays, voice-over or music cues, and the montage must still open on\na hook within 3 seconds and end on an unresolved cliffhanger. Returning zero montages is acceptable.\n\nScore each criterion 1-5 (integers). Anchors:\n- hook (first 3 seconds of the clip): 5 = a line, action or image that would stop a stranger mid-scroll with zero context\n  (public humiliation, slap, shocking accusation, threat, reveal). 3 = intriguing but takes a few seconds to land.\n  1 = establishing shot, calm talk, or a line that only matters if you already know the characters.\n- cliffhanger (the cut): 5 = cuts on an open, high-stakes question (threat mid-delivery, reveal half-made, decision\n  pending, danger arriving). 3 = some tension, but partly resolved or soft. 1 = the conflict resolves or the clip fades out.\n- standalone: 5 = a first-time viewer understands who is wronging whom and what is at stake from the clip alone.\n  3 = gist is clear but key relationships or stakes are missing. 1 = confusing without earlier episodes.\n- emotion_curiosity: 5 = intense emotion AND a strong \"what happens next / who is this\" gap. 1 = flat or routine.\n- visual: judged only from CAM/ACT/SFX descriptions. 5 = striking, readable images on a phone (tight faces, physical\n  action, spectacle such as fire, chains, crowds). 1 = static, dark, or talky.\n- spoiler_safety: 5 = reveals only premise-level information (the show title is public, so anything the title says is\n  not a spoiler). 1 = gives away a major twist or payoff that is the reason to keep watching.\n\nRules: use only ids shown below, written exactly as shown (E03-L045). segments[].episode is the episode number and\nstart_id/end_id are the ids. hook_id and cliffhanger_id and evidence_ids also use the E03-L045 form. Never invent\ndialogue, events or times.\n",
+    "user": "SHOW: synthetic_show\n\nSTRONGEST SINGLE MOMENTS:\n\n[E01-C1] Episode 1: You Buried the Wrong Sister\nHook: Victor slides a photo across the counter and says, 'You buried the wrong sister.' (L003)\nCliffhanger: Maya turns the photo over; the back reads 'DON'T TRUST HIM' in her own handwriting. (L016)\nE01-L002 [00:03.00-00:05.00] CAM Close-up on MAYA, a waitress, freezing as a man in a grey suit slides a photograph across the counter.\nE01-L003 [00:03.20-00:05.00] DIA VICTOR (Low, Menacing): \"You buried the wrong sister.\"\nE01-L004 [00:05.40-00:06.60] DIA MAYA (Stunned): \"What did you say?\"\nE01-L005 [00:06.60-00:09.00] CAM Insert on the photograph: Maya's twin, smiling, holding today's newspaper.\nE01-L006 [00:07.00-00:09.80] DIA VICTOR (Cold): \"She is alive. And she wants your life back.\"\nE01-L007 [00:10.00-00:12.00] ACT Maya drops the coffee pot. It shatters across the tiles.\nE01-L008 [00:10.10-00:11.00] SFX Sharp crash of shattering glass.\nE01-L009 [00:12.50-00:15.00] DIA MAYA (Shaking): \"I watched them lower her coffin.\"\nE01-L010 [00:15.40-00:18.00] DIA VICTOR (Amused): \"You watched them lower a box.\"\nE01-L011 [00:18.00-00:21.00] CAM Medium shot as Victor stands, buttoning his coat.\nE01-L012 [00:21.20-00:24.50] DIA VICTOR (Quiet): \"Midnight. The old pier. Come alone.\"\nE01-L013 [00:25.00-00:27.00] DIA MAYA (Desperate): \"Why are you helping me?\"\nE01-L014 [00:27.50-00:30.00] DIA VICTOR (Smiling): \"Who said I was?\"\nE01-L015 [00:30.00-00:33.00] CAM Close-up on Maya's face as the door chime rings and Victor disappears into the rain.\nE01-L016 [00:33.00-00:36.00] ACT Maya turns the photograph over. On the back, in her own handwriting: DON'T TRUST HIM.\nE01-L017 [00:35.00-00:38.00] SFX Ominous low drone swells to a cliffhanger sting.\n\n[E02-C1] Episode 2: Twin Reveal to Blackmail Threat\nHook: Over-the-shoulder reveal of a woman with Maya's exact face standing at the far end of a foggy pier — immediate visual proof the 'dead' twin is alive.\nCliffhanger: Elena smiles, holds up a ring engraved with Maya's initials, and says: 'Then the police find this beside his body.' — explicit frame-up threat leaving Maya's choice and the husband's fate hanging.\nE02-L004 [00:09.00-00:12.00] CAM Over-the-shoulder shot revealing a woman with Maya's face at the far end of the pier.\nE02-L005 [00:12.20-00:14.50] DIA ELENA (Calm): \"Hello, sister. You look tired.\"\nE02-L006 [00:15.00-00:17.00] DIA MAYA (Breaking): \"You let me grieve you for a year!\"\nE02-L007 [00:17.50-00:21.00] DIA ELENA (Cold): \"I let you keep my husband warm for a year.\"\nE02-L008 [00:21.00-00:23.00] ACT Maya steps back as headlights flare behind Elena.\nE02-L009 [00:23.50-00:26.00] DIA ELENA (Commanding): \"Tonight, you give it all back.\"\nE02-L010 [00:26.50-00:28.50] DIA MAYA (Defiant): \"And if I refuse?\"\nE02-L011 [00:28.50-00:31.00] CAM Close-up on Elena raising a ring with Maya's initials engraved inside.\nE02-L012 [00:31.00-00:34.00] DIA ELENA (Smiling): \"Then the police find this beside his body.\"",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "episode_note": {
+          "type": "string"
+        },
+        "candidates": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": "string"
+              },
+              "segments": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "episode": {
+                      "type": "integer"
+                    },
+                    "start_id": {
+                      "type": "string"
+                    },
+                    "end_id": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "episode",
+                    "start_id",
+                    "end_id"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "hook_id": {
+                "type": "string"
+              },
+              "hook": {
+                "type": "string"
+              },
+              "cliffhanger_id": {
+                "type": "string"
+              },
+              "cliffhanger": {
+                "type": "string"
+              },
+              "why_it_works": {
+                "type": "string"
+              },
+              "stranger_view": {
+                "type": "string"
+              },
+              "evidence_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "scores": {
+                "type": "object",
+                "properties": {
+                  "hook": {
+                    "type": "object",
+                    "properties": {
+                      "score": {
+                        "type": "integer"
+                      },
+                      "reason": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "score",
+                      "reason"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "cliffhanger": {
+                    "type": "object",
+                    "properties": {
+                      "score": {
+                        "type": "integer"
+                      },
+                      "reason": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "score",
+                      "reason"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "standalone": {
+                    "type": "object",
+                    "properties": {
+                      "score": {
+                        "type": "integer"
+                      },
+                      "reason": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "score",
+                      "reason"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "emotion_curiosity": {
+                    "type": "object",
+                    "properties": {
+                      "score": {
+                        "type": "integer"
+                      },
+                      "reason": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "score",
+                      "reason"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "visual": {
+                    "type": "object",
+                    "properties": {
+                      "score": {
+                        "type": "integer"
+                      },
+                      "reason": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "score",
+                      "reason"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "spoiler_safety": {
+                    "type": "object",
+                    "properties": {
+                      "score": {
+                        "type": "integer"
+                      },
+                      "reason": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "score",
+                      "reason"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "hook",
+                  "cliffhanger",
+                  "standalone",
+                  "emotion_curiosity",
+                  "visual",
+                  "spoiler_safety"
+                ],
+                "additionalProperties": false
+              },
+              "context_dependencies": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "spoiler_risk": {
+                "type": "string",
+                "enum": [
+                  "none",
+                  "low",
+                  "medium",
+                  "high"
+                ]
+              },
+              "spoiler_note": {
+                "type": "string"
+              },
+              "weaknesses": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "confidence": {
+                "type": "string",
+                "enum": [
+                  "high",
+                  "medium",
+                  "low"
+                ]
+              }
+            },
+            "required": [
+              "title",
+              "segments",
+              "hook_id",
+              "hook",
+              "cliffhanger_id",
+              "cliffhanger",
+              "why_it_works",
+              "stranger_view",
+              "evidence_ids",
+              "scores",
+              "context_dependencies",
+              "spoiler_risk",
+              "spoiler_note",
+              "weaknesses",
+              "confidence"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "episode_note",
+        "candidates"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "provider": "openai_compatible",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b",
+  "usage": {
+    "input_tokens": 2647,
+    "output_tokens": 1867
+  },
+  "cached": true,
+  "response_text": "{\n  \"episode_note\": \"E01 and E02 form a continuous narrative arc: E01 drops the inciting incident (Victor reveals the buried twin is alive, summons Maya to the pier), and E02 pays it off with the twin confrontation and a frame-up threat. A montage stitching the two episodes sells the full premise — dead twin alive, husband stolen, murder frame — in a single trailer-length clip.\",\n  \"candidates\": [\n    {\n      \"title\": \"Wrong Sister / Wrong Life\",\n      \"segments\": [\n        {\n          \"episode\": 1,\n          \"start_id\": \"E01-L002\",\n          \"end_id\": \"E01-L006\"\n        },\n        {\n          \"episode\": 2,\n          \"start_id\": \"E02-L004\",\n          \"end_id\": \"E02-L008\"\n        },\n        {\n          \"episode\": 2,\n          \"start_id\": \"E02-L010\",\n          \"end_id\": \"E02-L012\"\n        }\n      ],\n      \"hook_id\": \"E01-L003\",\n      \"hook\": \"Victor slides a photo across the counter and says, 'You buried the wrong sister.'\",\n      \"cliffhanger_id\": \"E02-L012\",\n      \"cliffhanger\": \"Elena holds up a ring engraved with Maya's initials and says, 'Then the police find this beside his body.'\",\n      \"why_it_works\": \"The montage chains the inciting revelation (E01) directly into the payoff confrontation (E02), delivering the show's entire hook — twin switched, husband stolen, frame-up looming — in under 60 seconds. The cut from Victor's 'midnight pier' order to the actual pier reveal creates instant narrative momentum without any exposition.\",\n      \"stranger_view\": \"A stranger sees: 1) a waitress told the sister she buried is alive, 2) that sister appears on a foggy pier with the same face, 3) the sister admits she let the waitress 'keep her husband warm' and now threatens to plant evidence framing her for murder. Stakes, relationships, and the central threat are all visible.\",\n      \"evidence_ids\": [\n        \"E01-L002\",\n        \"E01-L003\",\n        \"E01-L005\",\n        \"E01-L006\",\n        \"E02-L004\",\n        \"E02-L005\",\n        \"E02-L007\",\n        \"E02-L008\",\n        \"E02-L011\",\n        \"E02-L012\"\n      ],\n      \"scores\": {\n        \"hook\": {\n          \"score\": 5,\n          \"reason\": \"Victor's line 'You buried the wrong sister' is a shocking accusation delivered with a photo proof; it stops a scroll instantly with zero context.\"\n        },\n        \"cliffhanger\": {\n          \"score\": 5,\n          \"reason\": \"Elena's explicit frame-up threat — ring with Maya's initials, 'police find this beside his body' — leaves the husband's fate and Maya's choice completely open.\"\n        },\n        \"standalone\": {\n          \"score\": 5,\n          \"reason\": \"Every beat is self-explanatory: photo proves twin alive, pier meeting confirms it, dialogue establishes husband theft, ring threat establishes murder frame. No prior knowledge needed.\"\n        },\n        \"emotion_curiosity\": {\n          \"score\": 5,\n          \"reason\": \"Grief betrayal (Maya), cold manipulation (Elena), mortal danger (husband) — intense emotion plus a massive 'what happens next' gap at the cut.\"\n        },\n        \"visual\": {\n          \"score\": 5,\n          \"reason\": \"Tight faces (Victor, Maya, Elena), photo insert, shattering coffee pot, foggy pier reveal, headlight flare, ring close-up — all striking, phone-readable images.\"\n        },\n        \"spoiler_safety\": {\n          \"score\": 4,\n          \"reason\": \"Reveals premise-level twists (twin alive, husband stolen, blackmail) but not the resolution. The show title already signals the twin swap; the frame-up is the engine of the series, not its payoff.\"\n        }\n      },\n      \"context_dependencies\": [],\n      \"spoiler_risk\": \"low\",\n      \"spoiler_note\": \"Only premise-level reveals; the central mystery (who is Victor, why the note in Maya's handwriting, what happens at midnight) remains intact.\",\n      \"weaknesses\": [\n        \"Requires a clean audio bridge over the episode boundary (Victor's 'midnight pier' line to pier ambience).\",\n        \"Elena's 'husband' line assumes viewer infers the man is Maya's husband — clear but not explicit.\"\n      ],\n      \"confidence\": \"high\"\n    }\n  ]\n}"
+}

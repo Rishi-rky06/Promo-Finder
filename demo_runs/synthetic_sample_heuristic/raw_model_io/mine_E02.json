@@ -1,0 +1,64 @@
+{
+  "task_id": "mine_E02",
+  "provider": "heuristic",
+  "parsed": {
+    "episode_note": "heuristic baseline: 4 windows scored",
+    "candidates": [
+      {
+        "title": "Ep 2 rule-based pick @ L003",
+        "segments": [
+          {
+            "episode": 2,
+            "start_id": "L003",
+            "end_id": "L013"
+          }
+        ],
+        "hook_id": "L003",
+        "hook": "Opens on: \"Hello?\"",
+        "cliffhanger_id": "L013",
+        "cliffhanger": "Cuts on: Thunderclap and a sudden cliffhanger cut.",
+        "why_it_works": "Heuristic: opening-signal 1.0, ending-signal 3.5, intense delivery on 29% of lines. No story understanding.",
+        "stranger_view": "Not assessed (heuristic has no story understanding).",
+        "evidence_ids": [
+          "L003",
+          "L013"
+        ],
+        "scores": {
+          "hook": {
+            "score": 2,
+            "reason": "rule-based estimate (see heuristic.py)"
+          },
+          "cliffhanger": {
+            "score": 5,
+            "reason": "rule-based estimate (see heuristic.py)"
+          },
+          "standalone": {
+            "score": 3,
+            "reason": "rule-based estimate (see heuristic.py)"
+          },
+          "emotion_curiosity": {
+            "score": 2,
+            "reason": "rule-based estimate (see heuristic.py)"
+          },
+          "visual": {
+            "score": 1,
+            "reason": "rule-based estimate (see heuristic.py)"
+          },
+          "spoiler_safety": {
+            "score": 2,
+            "reason": "rule-based estimate (see heuristic.py)"
+          }
+        },
+        "context_dependencies": [
+          "not assessed by heuristic"
+        ],
+        "spoiler_risk": "high",
+        "spoiler_note": "estimated from episode position (2/2) only",
+        "weaknesses": [
+          "keyword/structure heuristic: cannot judge story clarity or whether the ending is truly unresolved"
+        ],
+        "confidence": "low"
+      }
+    ]
+  }
+}

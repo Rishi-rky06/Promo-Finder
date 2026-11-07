@@ -1,0 +1,247 @@
+{
+  "task_id": "mine_E02",
+  "stage": "mine",
+  "request": {
+    "system": "You are a senior short-form promo editor for a vertical microdrama app. You pick 20-60 second clips from a show's\nown footage to post on TikTok/Instagram/YouTube Shorts to pull in NEW viewers who have never seen the show.\nYou will read one episode's screenplay. Every timed event has an id (L001, L002, ...), a start-end time, a type\n(CAM camera shot, ACT action, DIA dialogue, SFX sound) and its text.\n\nA promo must:\n1. HOOK: something in the first 3 seconds makes a scrolling stranger stop (slap, reveal, shocking line,\n   confrontation, unexpected action, raw emotion). The hook event must START within 3.0 seconds of the clip start,\n   so start the clip on, or at most a beat before, the hook. Never open on a slow establishing shot.\n2. CLIFFHANGER: it cuts at an unresolved moment. End the clip ON the cliffhanger line/reaction, not after the\n   tension has been released.\n3. STANDALONE: it makes sense to someone who has never seen the show.\n4. LENGTH: 20-60 seconds in total (prefer roughly 25-50). Duration = start time of the start event to end time of\n   the end event; work it out from the timestamps shown.\n5. Prefer ONE continuous segment. Use 2-3 segments (in story order, same episode) only when cutting out a lull or\n   joining a setup to its payoff makes the promo clearly stronger.\n\nJudge the whole sequence as a stranger would see it. Do not pick a clip just because it contains dramatic words.\nCharacter labels in the screenplay can vary for the same person (e.g. a character may be credited by description\nbefore their name is used); a viewer only sees faces, so judge clarity on screen, not labels.\n\nScore each criterion 1-5 (integers). Anchors:\n- hook (first 3 seconds of the clip): 5 = a line, action or image that would stop a stranger mid-scroll with zero context\n  (public humiliation, slap, shocking accusation, threat, reveal). 3 = intriguing but takes a few seconds to land.\n  1 = establishing shot, calm talk, or a line that only matters if you already know the characters.\n- cliffhanger (the cut): 5 = cuts on an open, high-stakes question (threat mid-delivery, reveal half-made, decision\n  pending, danger arriving). 3 = some tension, but partly resolved or soft. 1 = the conflict resolves or the clip fades out.\n- standalone: 5 = a first-time viewer understands who is wronging whom and what is at stake from the clip alone.\n  3 = gist is clear but key relationships or stakes are missing. 1 = confusing without earlier episodes.\n- emotion_curiosity: 5 = intense emotion AND a strong \"what happens next / who is this\" gap. 1 = flat or routine.\n- visual: judged only from CAM/ACT/SFX descriptions. 5 = striking, readable images on a phone (tight faces, physical\n  action, spectacle such as fire, chains, crowds). 1 = static, dark, or talky.\n- spoiler_safety: 5 = reveals only premise-level information (the show title is public, so anything the title says is\n  not a spoiler). 1 = gives away a major twist or payoff that is the reason to keep watching.\n\nRules:\n- Return up to 3 candidates for this episode, best first. They must be DIFFERENT moments, not overlapping variants.\n- Return zero candidates if nothing in the episode would work as a promo. Saying so is useful.\n- Refer to the screenplay only by event ids. Use only ids that appear in the transcript. Never invent dialogue,\n  events or times. hook_id is the event that hooks; cliffhanger_id is the event the clip cuts on.\n- evidence_ids: 2-5 ids of the lines that justify your judgment.\n- Be candid in weaknesses and context_dependencies: an editor will rely on them.\n",
+    "user": "SHOW: synthetic_show\n\nSERIES OUTLINE (episode loglines, for your understanding of who is who and what would be a spoiler; a new viewer has NOT seen any of this):\nEp 1: A waitress learns from a stranger that the twin sister she buried is alive.\nEp 2: At the pier, Maya meets her living twin, who demands her life back.\n\nEPISODE 2 (runtime 00:36.00)\nLogline: At the pier, Maya meets her living twin, who demands her life back.\nContinuity: Picks up from Episode 1.\n\nTRANSCRIPT (segments[].episode must be 2):\nL001 [00:00.00-00:04.00] CAM Wide establishing shot of an empty pier under fog.\nL002 [00:04.00-00:07.00] ACT Maya walks slowly along the boards, clutching the photograph.\nL003 [00:07.50-00:09.00] DIA MAYA (Whispering): \"Hello?\"\nL004 [00:09.00-00:12.00] CAM Over-the-shoulder shot revealing a woman with Maya's face at the far end of the pier.\nL005 [00:12.20-00:14.50] DIA ELENA (Calm): \"Hello, sister. You look tired.\"\nL006 [00:15.00-00:17.00] DIA MAYA (Breaking): \"You let me grieve you for a year!\"\nL007 [00:17.50-00:21.00] DIA ELENA (Cold): \"I let you keep my husband warm for a year.\"\nL008 [00:21.00-00:23.00] ACT Maya steps back as headlights flare behind Elena.\nL009 [00:23.50-00:26.00] DIA ELENA (Commanding): \"Tonight, you give it all back.\"\nL010 [00:26.50-00:28.50] DIA MAYA (Defiant): \"And if I refuse?\"\nL011 [00:28.50-00:31.00] CAM Close-up on Elena raising a ring with Maya's initials engraved inside.\nL012 [00:31.00-00:34.00] DIA ELENA (Smiling): \"Then the police find this beside his body.\"\nL013 [00:34.00-00:36.00] SFX Thunderclap and a sudden cliffhanger cut.\n",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "episode_note": {
+          "type": "string"
+        },
+        "candidates": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": "string"
+              },
+              "segments": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "episode": {
+                      "type": "integer"
+                    },
+                    "start_id": {
+                      "type": "string"
+                    },
+                    "end_id": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "episode",
+                    "start_id",
+                    "end_id"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "hook_id": {
+                "type": "string"
+              },
+              "hook": {
+                "type": "string"
+              },
+              "cliffhanger_id": {
+                "type": "string"
+              },
+              "cliffhanger": {
+                "type": "string"
+              },
+              "why_it_works": {
+                "type": "string"
+              },
+              "stranger_view": {
+                "type": "string"
+              },
+              "evidence_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "scores": {
+                "type": "object",
+                "properties": {
+                  "hook": {
+                    "type": "object",
+                    "properties": {
+                      "score": {
+                        "type": "integer"
+                      },
+                      "reason": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "score",
+                      "reason"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "cliffhanger": {
+                    "type": "object",
+                    "properties": {
+                      "score": {
+                        "type": "integer"
+                      },
+                      "reason": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "score",
+                      "reason"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "standalone": {
+                    "type": "object",
+                    "properties": {
+                      "score": {
+                        "type": "integer"
+                      },
+                      "reason": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "score",
+                      "reason"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "emotion_curiosity": {
+                    "type": "object",
+                    "properties": {
+                      "score": {
+                        "type": "integer"
+                      },
+                      "reason": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "score",
+                      "reason"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "visual": {
+                    "type": "object",
+                    "properties": {
+                      "score": {
+                        "type": "integer"
+                      },
+                      "reason": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "score",
+                      "reason"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "spoiler_safety": {
+                    "type": "object",
+                    "properties": {
+                      "score": {
+                        "type": "integer"
+                      },
+                      "reason": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "score",
+                      "reason"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "hook",
+                  "cliffhanger",
+                  "standalone",
+                  "emotion_curiosity",
+                  "visual",
+                  "spoiler_safety"
+                ],
+                "additionalProperties": false
+              },
+              "context_dependencies": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "spoiler_risk": {
+                "type": "string",
+                "enum": [
+                  "none",
+                  "low",
+                  "medium",
+                  "high"
+                ]
+              },
+              "spoiler_note": {
+                "type": "string"
+              },
+              "weaknesses": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "confidence": {
+                "type": "string",
+                "enum": [
+                  "high",
+                  "medium",
+                  "low"
+                ]
+              }
+            },
+            "required": [
+              "title",
+              "segments",
+              "hook_id",
+              "hook",
+              "cliffhanger_id",
+              "cliffhanger",
+              "why_it_works",
+              "stranger_view",
+              "evidence_ids",
+              "scores",
+              "context_dependencies",
+              "spoiler_risk",
+              "spoiler_note",
+              "weaknesses",
+              "confidence"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "episode_note",
+        "candidates"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "provider": "openai_compatible",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b",
+  "usage": {
+    "input_tokens": 2322,
+    "output_tokens": 3233
+  },
+  "cached": true,
+  "response_text": "{\n  \"episode_note\": \"Episode 2 is only 36 seconds long and consists almost entirely of the pier confrontation between Maya and her twin Elena. The first 9 seconds are slow establishing shots; the dramatic meat runs from the twin reveal (L004) through the blackmail threat (L012). A single continuous 25-second segment from L004 to L012 delivers a visual hook, clear standalone stakes, and a high-stakes cliffhanger. No other non-overlapping segment meets the 20-second minimum with a strong hook and cliffhanger.\",\n  \"candidates\": [\n    {\n      \"title\": \"Twin Reveal to Blackmail Threat\",\n      \"segments\": [\n        {\n          \"episode\": 2,\n          \"start_id\": \"L004\",\n          \"end_id\": \"L012\"\n        }\n      ],\n      \"hook_id\": \"L004\",\n      \"hook\": \"Over-the-shoulder reveal of a woman with Maya's exact face standing at the far end of a foggy pier — immediate visual proof the 'dead' twin is alive.\",\n      \"cliffhanger_id\": \"L012\",\n      \"cliffhanger\": \"Elena smiles, holds up a ring engraved with Maya's initials, and says: 'Then the police find this beside his body.' — explicit frame-up threat leaving Maya's choice and the husband's fate hanging.\",\n      \"why_it_works\": \"Opens on the scroll-stopping twin reveal (zero context needed), escalates through emotional accusation ('You let me grieve you for a year!') and a brutal betrayal reveal ('I let you keep my husband warm for a year'), then lands a concrete blackmail threat with physical evidence (the ring). A stranger understands: twin returned, husband stolen, life now held hostage. All in 25 seconds.\",\n      \"stranger_view\": \"A woman meets her identical twin she thought dead. The twin calmly admits she let the protagonist mourn for a year while taking her husband. Now she demands everything back — or she'll plant evidence framing the protagonist for the husband's murder. Clear sides, clear stakes, zero backstory required.\",\n      \"evidence_ids\": [\n        \"L004\",\n        \"L006\",\n        \"L007\",\n        \"L011\",\n        \"L012\"\n      ],\n      \"scores\": {\n        \"hook\": {\n          \"score\": 5,\n          \"reason\": \"Visual reveal of an identical twin on a foggy pier is instantly arresting — no dialogue needed, works mute, stops a scroll in under a second.\"\n        },\n        \"cliffhanger\": {\n          \"score\": 5,\n          \"reason\": \"Cuts on a smiling villain holding murder-frame evidence, issuing an ultimatum. The protagonist's fate, the husband's life, and the ring's significance are all unresolved.\"\n        },\n        \"standalone\": {\n          \"score\": 4,\n          \"reason\": \"The twin relationship, the year of grief, the husband theft, and the blackmail are all spoken or shown. Only minor gap: 'his body' refers to the husband, which is inferable but not explicitly labeled in-clip.\"\n        },\n        \"emotion_curiosity\": {\n          \"score\": 5,\n          \"reason\": \"Grief, rage, cold betrayal, and a life-or-death ultimatum packed into 25 seconds. Viewer asks: Will Maya comply? Is the husband already dead? What happens next?\"\n        },\n        \"visual\": {\n          \"score\": 5,\n          \"reason\": \"Foggy pier atmosphere, twin face reveal (tight over-shoulder), emotional close-ups, headlight flare, extreme close-up of engraved ring — all phone-readable and striking.\"\n        },\n        \"spoiler_safety\": {\n          \"score\": 4,\n          \"reason\": \"Reveals the episode-2 conflict (husband as leverage, ring as frame-up tool) but not the series outcome. The show's public logline ('twin demands her life back') already signals the husband is contested.\"\n        }\n      },\n      \"context_dependencies\": [\n        \"Viewer must accept the premise (established by show title/logline) that Maya believed her twin dead for a year.\"\n      ],\n      \"spoiler_risk\": \"low\",\n      \"spoiler_note\": \"Exposes the blackmail mechanism (the ring) and the husband as target, which are the episode's central conflict, not the series' final twists.\",\n      \"weaknesses\": [\n        \"First 9 seconds of episode (establishing pier, Maya walking) are discarded — correct editorial choice but means the clip lacks geographic establishing context.\",\n        \"The husband never appears on screen; his stakes are only verbal.\"\n      ],\n      \"confidence\": \"high\"\n    }\n  ]\n}"
+}

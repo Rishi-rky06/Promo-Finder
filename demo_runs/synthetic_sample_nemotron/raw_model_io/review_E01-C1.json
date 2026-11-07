@@ -1,0 +1,59 @@
+{
+  "task_id": "review_E01-C1",
+  "stage": "cold_viewer",
+  "request": {
+    "system": "You are a typical viewer scrolling short-form video. You have NEVER heard of this show. Below is the complete\nscreenplay of one short clip (camera, action, dialogue and sound), and separately what happens in its first\n3 seconds. Use ONLY what is in the clip. Do not guess plot from outside knowledge. Be honest and specific:\nif you would scroll past, say so.\n",
+    "user": "FIRST 3 SECONDS:\n[  0.0s] CAM Close-up on MAYA, a waitress, freezing as a man in a grey suit slides a photograph across the counter.\n[  0.2s] DIA VICTOR (Low, Menacing): \"You buried the wrong sister.\"\n[  2.4s] DIA MAYA (Stunned): \"What did you say?\"\n\nFULL CLIP:\n[  0.0s] CAM Close-up on MAYA, a waitress, freezing as a man in a grey suit slides a photograph across the counter.\n[  0.2s] DIA VICTOR (Low, Menacing): \"You buried the wrong sister.\"\n[  2.4s] DIA MAYA (Stunned): \"What did you say?\"\n[  3.6s] CAM Insert on the photograph: Maya's twin, smiling, holding today's newspaper.\n[  4.0s] DIA VICTOR (Cold): \"She is alive. And she wants your life back.\"\n[  7.0s] ACT Maya drops the coffee pot. It shatters across the tiles.\n[  7.1s] SFX Sharp crash of shattering glass.\n[  9.5s] DIA MAYA (Shaking): \"I watched them lower her coffin.\"\n[ 12.4s] DIA VICTOR (Amused): \"You watched them lower a box.\"\n[ 15.0s] CAM Medium shot as Victor stands, buttoning his coat.\n[ 18.2s] DIA VICTOR (Quiet): \"Midnight. The old pier. Come alone.\"\n[ 22.0s] DIA MAYA (Desperate): \"Why are you helping me?\"\n[ 24.5s] DIA VICTOR (Smiling): \"Who said I was?\"\n[ 27.0s] CAM Close-up on Maya's face as the door chime rings and Victor disappears into the rain.\n[ 30.0s] ACT Maya turns the photograph over. On the back, in her own handwriting: DON'T TRUST HIM.\n[ 32.0s] SFX Ominous low drone swells to a cliffhanger sting.\n\nScores are 1-5 integers (5 = strongest). Answer as the viewer.",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "what_i_understood": {
+          "type": "string"
+        },
+        "confusing_points": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "first_3_seconds_stop_scrolling": {
+          "type": "integer"
+        },
+        "first_3_seconds_reason": {
+          "type": "string"
+        },
+        "ending_leaves_open_question": {
+          "type": "boolean"
+        },
+        "open_question": {
+          "type": "string"
+        },
+        "could_follow_without_context": {
+          "type": "boolean"
+        },
+        "would_watch_next_episode": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "what_i_understood",
+        "confusing_points",
+        "first_3_seconds_stop_scrolling",
+        "first_3_seconds_reason",
+        "ending_leaves_open_question",
+        "open_question",
+        "could_follow_without_context",
+        "would_watch_next_episode"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "provider": "openai_compatible",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b",
+  "usage": {
+    "input_tokens": 805,
+    "output_tokens": 898
+  },
+  "cached": true,
+  "response_text": "{\n  \"what_i_understood\": \"A waitress named Maya is confronted by a mysterious man in a grey suit (Victor) who slides a photo across the counter and claims she buried the wrong sister — that her twin is actually alive, proven by a photo with today's newspaper. Maya insists she watched the coffin lowered. Victor says she only watched a box get lowered, gives her a midnight meeting at the old pier, and when she asks why he's helping, he smiles and says 'Who said I was?' The clip ends with Maya finding a note in her own handwriting on the back of the photo: 'DON'T TRUST HIM.'\",\n  \"confusing_points\": [\n    \"Who is Victor and how does he know about Maya's sister?\",\n    \"How could the sister be alive if Maya attended the funeral and burial?\",\n    \"Why does Maya have a note in her own handwriting that she doesn't remember writing?\",\n    \"Is Victor a threat, an ally, or something else entirely?\"\n  ],\n  \"first_3_seconds_stop_scrolling\": 5,\n  \"first_3_seconds_reason\": \"The opening line 'You buried the wrong sister' is an instant hook — high personal stakes, supernatural or conspiracy implication, and immediate mystery. The close-up on Maya freezing and the photo slide create visual tension before any dialogue. It's the kind of logline-level concept that stops a scroll cold.\",\n  \"ending_leaves_open_question\": true,\n  \"open_question\": \"Is the sister really alive, and if so, who wrote the warning note in Maya's handwriting — and why doesn't she remember?\",\n  \"could_follow_without_context\": true,\n  \"would_watch_next_episode\": 5\n}"
+}

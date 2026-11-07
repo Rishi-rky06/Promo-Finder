@@ -1,0 +1,17 @@
+# Run outputs quote Kuku's confidential screenplays: never commit them.
+outputs/
+.cache/
+exchange/
+*.zip
+# Screenplay text files belong outside the repo (the bundled sample is original content).
+*.txt
+!samples/**/*.txt
+!requirements.txt
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# secrets
+.env

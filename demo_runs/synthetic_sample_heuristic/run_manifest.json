@@ -1,0 +1,147 @@
+{
+  "tool": "promo-finder",
+  "version": "1.0.0",
+  "started_utc": "2026-11-07T21:28:29+00:00",
+  "finished_utc": "2026-11-07T21:28:29+00:00",
+  "elapsed_s": 0.0,
+  "status": "complete",
+  "input": "samples/synthetic_show",
+  "show_title": "synthetic_show",
+  "episodes_found": 2,
+  "episodes_mined_ok": 2,
+  "episodes_pending": [],
+  "episodes_failed": [],
+  "skipped_files": [
+    {
+      "file": "README.txt",
+      "reason": "no timed screenplay blocks found"
+    }
+  ],
+  "provider": "heuristic",
+  "provider_detail": "heuristic",
+  "responder": null,
+  "stages": {
+    "montage": "skipped (heuristic provider or disabled)",
+    "cold_viewer": "skipped (heuristic provider or disabled)"
+  },
+  "tasks_pending": [],
+  "tasks_failed": [],
+  "counts": {
+    "candidates_valid": 2,
+    "candidates_rejected": 0,
+    "montages_valid": 0,
+    "shortlist": 2,
+    "alternatives": 0,
+    "duplicates": 0
+  },
+  "usage_measured": {
+    "input_tokens": 0,
+    "output_tokens": 0
+  },
+  "cost_estimate": {
+    "pricing_model": "claude-opus-5-5",
+    "note": "",
+    "measured_tokens": {
+      "input": 0,
+      "output_incl_thinking": 0
+    }
+  },
+  "tasks": [
+    {
+      "task_id": "mine_E01",
+      "stage": "mine",
+      "status": "ok",
+      "provider": "heuristic",
+      "error": null
+    },
+    {
+      "task_id": "mine_E02",
+      "stage": "mine",
+      "status": "ok",
+      "provider": "heuristic",
+      "error": null
+    }
+  ],
+  "config": {
+    "provider": {
+      "name": "heuristic",
+      "workers": 4,
+      "cache_dir": ".cache/model_responses",
+      "anthropic": {
+        "model": "claude-opus-5-5",
+        "effort": "medium",
+        "max_tokens": 16000,
+        "use_refusal_fallback": true
+      },
+      "openai_compatible": {
+        "base_url": "https://generativelanguage.googleapis.com/v1beta/openai/",
+        "api_key_env": "GEMINI_API_KEY",
+        "model": "",
+        "json_mode": "schema",
+        "max_tokens": 16000,
+        "temperature": 0.2
+      },
+      "file": {
+        "exchange_dir": ""
+      }
+    },
+    "promo": {
+      "min_seconds": 20.0,
+      "max_seconds": 60.0,
+      "hook_window_seconds": 3.0,
+      "cliffhanger_tail_seconds": 4.0,
+      "max_segments": 3,
+      "candidates_per_episode": 3,
+      "dead_air_open_seconds": 2.5,
+      "repair_attempts": 1
+    },
+    "weights": {
+      "hook": 0.25,
+      "cliffhanger": 0.25,
+      "standalone": 0.2,
+      "emotion_curiosity": 0.15,
+      "visual": 0.08,
+      "spoiler_safety": 0.07
+    },
+    "penalties": {
+      "late_hook": 12.0,
+      "cut_after_cliffhanger": 6.0,
+      "dead_air_open": 5.0,
+      "camera_only_hook": 4.0,
+      "per_extra_segment": 3.0,
+      "cross_episode": 3.0,
+      "boundary_adjusted": 1.0,
+      "cold_viewer_confused": 8.0,
+      "episode_depth_per_10": 0.0
+    },
+    "ranking": {
+      "shortlist_size": 10,
+      "max_per_episode_in_shortlist": 1,
+      "same_episode_overlap": 0.5,
+      "text_similarity": 0.6
+    },
+    "review": {
+      "cold_viewer": true,
+      "cold_viewer_top_n": 12
+    },
+    "montage": {
+      "enabled": true,
+      "source_candidates": 20,
+      "max_montages": 3
+    },
+    "pricing": {
+      "claude-opus-5-5": {
+        "input": 4.0,
+        "output": 20.0
+      },
+      "claude-sonnet-5-5": {
+        "input": 2.0,
+        "output": 10.0
+      },
+      "claude-haiku-5-5": {
+        "input": 0.1,
+        "output": 0.5
+      }
+    }
+  }
+}

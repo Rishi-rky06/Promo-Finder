@@ -1,0 +1,247 @@
+{
+  "task_id": "mine_E01",
+  "stage": "mine",
+  "request": {
+    "system": "You are a senior short-form promo editor for a vertical microdrama app. You pick 20-60 second clips from a show's\nown footage to post on TikTok/Instagram/YouTube Shorts to pull in NEW viewers who have never seen the show.\nYou will read one episode's screenplay. Every timed event has an id (L001, L002, ...), a start-end time, a type\n(CAM camera shot, ACT action, DIA dialogue, SFX sound) and its text.\n\nA promo must:\n1. HOOK: something in the first 3 seconds makes a scrolling stranger stop (slap, reveal, shocking line,\n   confrontation, unexpected action, raw emotion). The hook event must START within 3.0 seconds of the clip start,\n   so start the clip on, or at most a beat before, the hook. Never open on a slow establishing shot.\n2. CLIFFHANGER: it cuts at an unresolved moment. End the clip ON the cliffhanger line/reaction, not after the\n   tension has been released.\n3. STANDALONE: it makes sense to someone who has never seen the show.\n4. LENGTH: 20-60 seconds in total (prefer roughly 25-50). Duration = start time of the start event to end time of\n   the end event; work it out from the timestamps shown.\n5. Prefer ONE continuous segment. Use 2-3 segments (in story order, same episode) only when cutting out a lull or\n   joining a setup to its payoff makes the promo clearly stronger.\n\nJudge the whole sequence as a stranger would see it. Do not pick a clip just because it contains dramatic words.\nCharacter labels in the screenplay can vary for the same person (e.g. a character may be credited by description\nbefore their name is used); a viewer only sees faces, so judge clarity on screen, not labels.\n\nScore each criterion 1-5 (integers). Anchors:\n- hook (first 3 seconds of the clip): 5 = a line, action or image that would stop a stranger mid-scroll with zero context\n  (public humiliation, slap, shocking accusation, threat, reveal). 3 = intriguing but takes a few seconds to land.\n  1 = establishing shot, calm talk, or a line that only matters if you already know the characters.\n- cliffhanger (the cut): 5 = cuts on an open, high-stakes question (threat mid-delivery, reveal half-made, decision\n  pending, danger arriving). 3 = some tension, but partly resolved or soft. 1 = the conflict resolves or the clip fades out.\n- standalone: 5 = a first-time viewer understands who is wronging whom and what is at stake from the clip alone.\n  3 = gist is clear but key relationships or stakes are missing. 1 = confusing without earlier episodes.\n- emotion_curiosity: 5 = intense emotion AND a strong \"what happens next / who is this\" gap. 1 = flat or routine.\n- visual: judged only from CAM/ACT/SFX descriptions. 5 = striking, readable images on a phone (tight faces, physical\n  action, spectacle such as fire, chains, crowds). 1 = static, dark, or talky.\n- spoiler_safety: 5 = reveals only premise-level information (the show title is public, so anything the title says is\n  not a spoiler). 1 = gives away a major twist or payoff that is the reason to keep watching.\n\nRules:\n- Return up to 3 candidates for this episode, best first. They must be DIFFERENT moments, not overlapping variants.\n- Return zero candidates if nothing in the episode would work as a promo. Saying so is useful.\n- Refer to the screenplay only by event ids. Use only ids that appear in the transcript. Never invent dialogue,\n  events or times. hook_id is the event that hooks; cliffhanger_id is the event the clip cuts on.\n- evidence_ids: 2-5 ids of the lines that justify your judgment.\n- Be candid in weaknesses and context_dependencies: an editor will rely on them.\n",
+    "user": "SHOW: synthetic_show\n\nSERIES OUTLINE (episode loglines, for your understanding of who is who and what would be a spoiler; a new viewer has NOT seen any of this):\nEp 1: A waitress learns from a stranger that the twin sister she buried is alive.\nEp 2: At the pier, Maya meets her living twin, who demands her life back.\n\nEPISODE 1 (runtime 00:39.00)\nLogline: A waitress learns from a stranger that the twin sister she buried is alive.\nContinuity: First episode.\n\nTRANSCRIPT (segments[].episode must be 1):\nL001 [00:00.00-00:03.00] CAM Wide shot of a rain-soaked rooftop diner sign flickering at night.\nL002 [00:03.00-00:05.00] CAM Close-up on MAYA, a waitress, freezing as a man in a grey suit slides a photograph across the counter.\nL003 [00:03.20-00:05.00] DIA VICTOR (Low, Menacing): \"You buried the wrong sister.\"\nL004 [00:05.40-00:06.60] DIA MAYA (Stunned): \"What did you say?\"\nL005 [00:06.60-00:09.00] CAM Insert on the photograph: Maya's twin, smiling, holding today's newspaper.\nL006 [00:07.00-00:09.80] DIA VICTOR (Cold): \"She is alive. And she wants your life back.\"\nL007 [00:10.00-00:12.00] ACT Maya drops the coffee pot. It shatters across the tiles.\nL008 [00:10.10-00:11.00] SFX Sharp crash of shattering glass.\nL009 [00:12.50-00:15.00] DIA MAYA (Shaking): \"I watched them lower her coffin.\"\nL010 [00:15.40-00:18.00] DIA VICTOR (Amused): \"You watched them lower a box.\"\nL011 [00:18.00-00:21.00] CAM Medium shot as Victor stands, buttoning his coat.\nL012 [00:21.20-00:24.50] DIA VICTOR (Quiet): \"Midnight. The old pier. Come alone.\"\nL013 [00:25.00-00:27.00] DIA MAYA (Desperate): \"Why are you helping me?\"\nL014 [00:27.50-00:30.00] DIA VICTOR (Smiling): \"Who said I was?\"\nL015 [00:30.00-00:33.00] CAM Close-up on Maya's face as the door chime rings and Victor disappears into the rain.\nL016 [00:33.00-00:36.00] ACT Maya turns the photograph over. On the back, in her own handwriting: DON'T TRUST HIM.\nL017 [00:35.00-00:38.00] SFX Ominous low drone swells to a cliffhanger sting.\nL018 [00:38.00-00:39.00] CAM Cut to black.\n",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "episode_note": {
+          "type": "string"
+        },
+        "candidates": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": "string"
+              },
+              "segments": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "episode": {
+                      "type": "integer"
+                    },
+                    "start_id": {
+                      "type": "string"
+                    },
+                    "end_id": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "episode",
+                    "start_id",
+                    "end_id"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "hook_id": {
+                "type": "string"
+              },
+              "hook": {
+                "type": "string"
+              },
+              "cliffhanger_id": {
+                "type": "string"
+              },
+              "cliffhanger": {
+                "type": "string"
+              },
+              "why_it_works": {
+                "type": "string"
+              },
+              "stranger_view": {
+                "type": "string"
+              },
+              "evidence_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "scores": {
+                "type": "object",
+                "properties": {
+                  "hook": {
+                    "type": "object",
+                    "properties": {
+                      "score": {
+                        "type": "integer"
+                      },
+                      "reason": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "score",
+                      "reason"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "cliffhanger": {
+                    "type": "object",
+                    "properties": {
+                      "score": {
+                        "type": "integer"
+                      },
+                      "reason": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "score",
+                      "reason"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "standalone": {
+                    "type": "object",
+                    "properties": {
+                      "score": {
+                        "type": "integer"
+                      },
+                      "reason": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "score",
+                      "reason"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "emotion_curiosity": {
+                    "type": "object",
+                    "properties": {
+                      "score": {
+                        "type": "integer"
+                      },
+                      "reason": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "score",
+                      "reason"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "visual": {
+                    "type": "object",
+                    "properties": {
+                      "score": {
+                        "type": "integer"
+                      },
+                      "reason": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "score",
+                      "reason"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "spoiler_safety": {
+                    "type": "object",
+                    "properties": {
+                      "score": {
+                        "type": "integer"
+                      },
+                      "reason": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "score",
+                      "reason"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "hook",
+                  "cliffhanger",
+                  "standalone",
+                  "emotion_curiosity",
+                  "visual",
+                  "spoiler_safety"
+                ],
+                "additionalProperties": false
+              },
+              "context_dependencies": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "spoiler_risk": {
+                "type": "string",
+                "enum": [
+                  "none",
+                  "low",
+                  "medium",
+                  "high"
+                ]
+              },
+              "spoiler_note": {
+                "type": "string"
+              },
+              "weaknesses": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "confidence": {
+                "type": "string",
+                "enum": [
+                  "high",
+                  "medium",
+                  "low"
+                ]
+              }
+            },
+            "required": [
+              "title",
+              "segments",
+              "hook_id",
+              "hook",
+              "cliffhanger_id",
+              "cliffhanger",
+              "why_it_works",
+              "stranger_view",
+              "evidence_ids",
+              "scores",
+              "context_dependencies",
+              "spoiler_risk",
+              "spoiler_note",
+              "weaknesses",
+              "confidence"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "episode_note",
+        "candidates"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "provider": "openai_compatible",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b",
+  "usage": {
+    "input_tokens": 2520,
+    "output_tokens": 5196
+  },
+  "cached": true,
+  "response_text": "{\n  \"episode_note\": \"This episode is a single 39-second scene in a rain-soaked diner where a stranger (Victor) tells waitress Maya that the twin sister she buried is alive. The entire episode is dense with hook-worthy beats, but its brevity means any 20-60s promo must start on the very first shocking line to satisfy the 3-second hook rule. The climax — a photograph with 'DON'T TRUST HIM' in Maya's own handwriting — is a superb visual cliffhanger.\",\n  \"candidates\": [\n    {\n      \"title\": \"You Buried the Wrong Sister\",\n      \"segments\": [\n        {\n          \"episode\": 1,\n          \"start_id\": \"L002\",\n          \"end_id\": \"L016\"\n        }\n      ],\n      \"hook_id\": \"L003\",\n      \"hook\": \"Victor slides a photo across the counter and says, 'You buried the wrong sister.' (L003)\",\n      \"cliffhanger_id\": \"L016\",\n      \"cliffhanger\": \"Maya turns the photo over; the back reads 'DON'T TRUST HIM' in her own handwriting. (L016)\",\n      \"why_it_works\": \"Opens on the single most arresting line in the episode — a direct, impossible accusation that forces a stranger to stop scrolling. The clip then escalates cleanly: photo proof of the living twin with today's newspaper, Victor's cold threat ('She wants your life back'), Maya shattering a coffee pot in raw panic, the coffin/box revelation, the midnight pier meet-up, Victor's ambiguous exit, and finally the handwritten note that reframes everything. Every beat is visual, high-stakes, and comprehensible without prior context.\",\n      \"stranger_view\": \"A waitress is told the sister she mourned is alive and coming for her life. A photo proves it. The stranger who delivered the news may be the enemy. The clip ends on a note in the waitress's own writing warning her not to trust him. Who is the twin? Who is Victor? Why did she write that note? The questions are immediate and visceral.\",\n      \"evidence_ids\": [\n        \"L002\",\n        \"L003\",\n        \"L005\",\n        \"L006\",\n        \"L007\",\n        \"L010\",\n        \"L012\",\n        \"L014\",\n        \"L016\"\n      ],\n      \"scores\": {\n        \"hook\": {\n          \"score\": 5,\n          \"reason\": \"The line 'You buried the wrong sister' lands at 3.2s (clip starts at 3.0s on L002). It is a flat-out impossible accusation delivered with menace — zero context needed, maximum scroll-stop power.\"\n        },\n        \"cliffhanger\": {\n          \"score\": 5,\n          \"reason\": \"Cuts exactly on the reveal of 'DON'T TRUST HIM' in Maya's handwriting. It reframes Victor's visit, implies Maya knew or wrote it earlier, and leaves the twin's status, Victor's allegiance, and Maya's next move all wide open.\"\n        },\n        \"standalone\": {\n          \"score\": 4,\n          \"reason\": \"A first-time viewer grasps the core conflict: Maya buried her twin, a stranger proves the twin is alive and threatening, and Maya has a mysterious self-written warning. Victor's identity and the note's origin remain mysteries (intentional), but the stakes and sides are clear.\"\n        },\n        \"emotion_curiosity\": {\n          \"score\": 5,\n          \"reason\": \"Combines shock (wrong sister), dread (twin wants her life), visceral action (shattering pot), intellectual puzzle (coffin vs box, the note), and paranoia (Victor's 'Who said I was helping?'). The curiosity gap is massive.\"\n        },\n        \"visual\": {\n          \"score\": 4,\n          \"reason\": \"Tight close-ups (Maya freezing, photo insert, pot smash, photo turn-over), readable text (newspaper date, handwritten note), and physical action. The diner setting is simple but the compositions are phone-friendly. Only the medium shots of Victor buttoning his coat are less striking.\"\n        },\n        \"spoiler_safety\": {\n          \"score\": 4,\n          \"reason\": \"Reveals the series premise (twin alive) which is public from the logline/title. The handwritten note is the episode's own cliffhanger, not a future twist. No payoff from Ep 2+ is given. The only risk is showing the episode's final sting, but that is the promo's job.\"\n        }\n      },\n      \"context_dependencies\": [\n        \"Victor's true allegiance and employer are unknown — the clip leans into that ambiguity.\",\n        \"The origin of the 'DON'T TRUST HIM' note (when/why Maya wrote it) is not explained and requires future episodes.\",\n        \"The twin's identity, motives, and current situation are entirely unseen.\"\n      ],\n      \"spoiler_risk\": \"low\",\n      \"spoiler_note\": \"Shows the episode's central revelation and its final cliffhanger image. Both are premise-level hooks for the series, not resolutions of later arcs.\",\n      \"weaknesses\": [\n        \"The episode is only 39s long; the promo uses 33s of it, leaving almost no room for pacing breaths or music cues.\",\n        \"Victor's 'Midnight. The old pier. Come alone.' setup pays off in Ep 2 — a viewer who watches only this promo won't see the payoff, but the line works as a standalone threat.\",\n        \"The handwritten note twist is so strong it may raise expectations the show must deliver on quickly.\"\n      ],\n      \"confidence\": \"high\"\n    }\n  ]\n}"
+}

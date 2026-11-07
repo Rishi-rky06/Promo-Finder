@@ -1,0 +1,66 @@
+EPISODE NUMBER: Episode 2
+EPISODE LOGLINE: At the pier, Maya meets her living twin, who demands her life back.
+CONTINUITY NOTES: Picks up from Episode 1.
+
+--- SCRIPT START ---
+
+SCENE 01
+Scene heading: EXT. OLD PIER - NIGHT
+Scene start: 00:00.00
+Scene end: 00:36.00
+
+Actions and dialogue:
+
+**CAMERA:**
+Start: (00:00.00) | End: (00:04.00)
+Wide establishing shot of an empty pier under fog.
+
+**ACTION:**
+Start: (00:04.00) | End: (00:07.00)
+Maya walks slowly along the boards, clutching the photograph.
+
+**MAYA (Whispering):**
+Start: (00:07.50) | End: (00:09.00)
+"Hello?"
+
+**CAMERA:**
+Start: (00:09.00) | End: (00:12.00)
+Over-the-shoulder shot revealing a woman with Maya's face at the far end of the pier.
+
+**ELENA (Calm):**
+Start: (00:12.20) | End: (00:14.50)
+"Hello, sister. You look tired."
+
+**MAYA (Breaking):**
+Start: (00:15.00) | End: (00:17.00)
+"You let me grieve you for a year!"
+
+**ELENA (Cold):**
+Start: (00:17.50) | End: (00:21.00)
+"I let you keep my husband warm for a year."
+
+**ACTION:**
+Start: (00:21.00) | End: (00:23.00)
+Maya steps back as headlights flare behind Elena.
+
+**ELENA (Commanding):**
+Start: (00:23.50) | End: (00:26.00)
+"Tonight, you give it all back."
+
+**MAYA (Defiant):**
+Start: (00:26.50) | End: (00:28.50)
+"And if I refuse?"
+
+**CAMERA:**
+Start: (00:28.50) | End: (00:31.00)
+Close-up on Elena raising a ring with Maya's initials engraved inside.
+
+**ELENA (Smiling):**
+Start: (00:31.00) | End: (00:34.00)
+"Then the police find this beside his body."
+
+**SOUND FX:**
+Start: (00:34.00) | End: (00:36.00)
+Thunderclap and a sudden cliffhanger cut.
+
+--- SCRIPT END ---

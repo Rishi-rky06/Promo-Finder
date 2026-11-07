@@ -1,0 +1,3 @@
+# Example override: favour promos close to episode 1 (where a new viewer lands).
+[penalties]
+episode_depth_per_10 = 3.0

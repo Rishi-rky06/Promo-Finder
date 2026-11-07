@@ -1,0 +1,785 @@
+{
+  "manifest": {
+    "tool": "promo-finder",
+    "version": "1.0.0",
+    "started_utc": "2026-11-07T21:28:29+00:00",
+    "finished_utc": "2026-11-07T21:28:29+00:00",
+    "elapsed_s": 0.0,
+    "status": "complete",
+    "input": "samples/synthetic_show",
+    "show_title": "synthetic_show",
+    "episodes_found": 2,
+    "episodes_mined_ok": 2,
+    "episodes_pending": [],
+    "episodes_failed": [],
+    "skipped_files": [
+      {
+        "file": "README.txt",
+        "reason": "no timed screenplay blocks found"
+      }
+    ],
+    "provider": "heuristic",
+    "provider_detail": "heuristic",
+    "responder": null,
+    "stages": {
+      "montage": "skipped (heuristic provider or disabled)",
+      "cold_viewer": "skipped (heuristic provider or disabled)"
+    },
+    "tasks_pending": [],
+    "tasks_failed": [],
+    "counts": {
+      "candidates_valid": 2,
+      "candidates_rejected": 0,
+      "montages_valid": 0,
+      "shortlist": 2,
+      "alternatives": 0,
+      "duplicates": 0
+    },
+    "usage_measured": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    },
+    "cost_estimate": {
+      "pricing_model": "claude-opus-5-5",
+      "note": "",
+      "measured_tokens": {
+        "input": 0,
+        "output_incl_thinking": 0
+      }
+    },
+    "tasks": [
+      {
+        "task_id": "mine_E01",
+        "stage": "mine",
+        "status": "ok",
+        "provider": "heuristic",
+        "error": null
+      },
+      {
+        "task_id": "mine_E02",
+        "stage": "mine",
+        "status": "ok",
+        "provider": "heuristic",
+        "error": null
+      }
+    ],
+    "config": {
+      "provider": {
+        "name": "heuristic",
+        "workers": 4,
+        "cache_dir": ".cache/model_responses",
+        "anthropic": {
+          "model": "claude-opus-5-5",
+          "effort": "medium",
+          "max_tokens": 16000,
+          "use_refusal_fallback": true
+        },
+        "openai_compatible": {
+          "base_url": "https://generativelanguage.googleapis.com/v1beta/openai/",
+          "api_key_env": "GEMINI_API_KEY",
+          "model": "",
+          "json_mode": "schema",
+          "max_tokens": 16000,
+          "temperature": 0.2
+        },
+        "file": {
+          "exchange_dir": ""
+        }
+      },
+      "promo": {
+        "min_seconds": 20.0,
+        "max_seconds": 60.0,
+        "hook_window_seconds": 3.0,
+        "cliffhanger_tail_seconds": 4.0,
+        "max_segments": 3,
+        "candidates_per_episode": 3,
+        "dead_air_open_seconds": 2.5,
+        "repair_attempts": 1
+      },
+      "weights": {
+        "hook": 0.25,
+        "cliffhanger": 0.25,
+        "standalone": 0.2,
+        "emotion_curiosity": 0.15,
+        "visual": 0.08,
+        "spoiler_safety": 0.07
+      },
+      "penalties": {
+        "late_hook": 12.0,
+        "cut_after_cliffhanger": 6.0,
+        "dead_air_open": 5.0,
+        "camera_only_hook": 4.0,
+        "per_extra_segment": 3.0,
+        "cross_episode": 3.0,
+        "boundary_adjusted": 1.0,
+        "cold_viewer_confused": 8.0,
+        "episode_depth_per_10": 0.0
+      },
+      "ranking": {
+        "shortlist_size": 10,
+        "max_per_episode_in_shortlist": 1,
+        "same_episode_overlap": 0.5,
+        "text_similarity": 0.6
+      },
+      "review": {
+        "cold_viewer": true,
+        "cold_viewer_top_n": 12
+      },
+      "montage": {
+        "enabled": true,
+        "source_candidates": 20,
+        "max_montages": 3
+      },
+      "pricing": {
+        "claude-opus-5-5": {
+          "input": 4.0,
+          "output": 20.0
+        },
+        "claude-sonnet-5-5": {
+          "input": 2.0,
+          "output": 10.0
+        },
+        "claude-haiku-5-5": {
+          "input": 0.1,
+          "output": 0.5
+        }
+      }
+    }
+  },
+  "episodes": [
+    {
+      "episode": 1,
+      "status": "ok",
+      "episode_note": "heuristic baseline: 12 windows scored",
+      "valid": [
+        "E01-C1"
+      ],
+      "rejected": []
+    },
+    {
+      "episode": 2,
+      "status": "ok",
+      "episode_note": "heuristic baseline: 4 windows scored",
+      "valid": [
+        "E02-C1"
+      ],
+      "rejected": []
+    }
+  ],
+  "candidates": [
+    {
+      "id": "E01-C1",
+      "origin": "heuristic",
+      "episodes": [
+        1
+      ],
+      "title": "Ep 1 rule-based pick @ L003",
+      "segments": [
+        {
+          "episode": 1,
+          "start_id": "L003",
+          "end_id": "L017",
+          "start": 3.2,
+          "end": 38.0,
+          "start_tc": "00:03.20",
+          "end_tc": "00:38.00",
+          "duration": 34.8
+        }
+      ],
+      "metrics": {
+        "total_duration": 34.8,
+        "segments": 1,
+        "hook_offset": 0.0,
+        "cliffhanger_tail": 0.0,
+        "first_beat_offset": 0.0,
+        "first_dialogue_offset": 0.0,
+        "dialogue_lines": 8,
+        "speakers": 2,
+        "longest_gap_without_dialogue": 10.5
+      },
+      "hook": "Opens on: \"You buried the wrong sister.\"",
+      "hook_line": "L003 [00:03.20-00:05.00] DIA VICTOR (Low, Menacing): \"You buried the wrong sister.\"",
+      "cliffhanger": "Cuts on: Ominous low drone swells to a cliffhanger sting.",
+      "cliffhanger_line": "L017 [00:35.00-00:38.00] SFX Ominous low drone swells to a cliffhanger sting.",
+      "why_it_works": "Heuristic: opening-signal 2.6, ending-signal 3.5, intense delivery on 38% of lines. No story understanding.",
+      "stranger_view": "Not assessed (heuristic has no story understanding).",
+      "evidence": [
+        {
+          "episode": 1,
+          "id": "L003",
+          "render": "L003 [00:03.20-00:05.00] DIA VICTOR (Low, Menacing): \"You buried the wrong sister.\"",
+          "inside_clip": true
+        },
+        {
+          "episode": 1,
+          "id": "L017",
+          "render": "L017 [00:35.00-00:38.00] SFX Ominous low drone swells to a cliffhanger sting.",
+          "inside_clip": true
+        }
+      ],
+      "scores": {
+        "hook": {
+          "score": 3,
+          "reason": "rule-based estimate (see heuristic.py)"
+        },
+        "cliffhanger": {
+          "score": 5,
+          "reason": "rule-based estimate (see heuristic.py)"
+        },
+        "standalone": {
+          "score": 3,
+          "reason": "rule-based estimate (see heuristic.py)"
+        },
+        "emotion_curiosity": {
+          "score": 3,
+          "reason": "rule-based estimate (see heuristic.py)"
+        },
+        "visual": {
+          "score": 2,
+          "reason": "rule-based estimate (see heuristic.py)"
+        },
+        "spoiler_safety": {
+          "score": 4,
+          "reason": "rule-based estimate (see heuristic.py)"
+        }
+      },
+      "context_dependencies": [
+        "not assessed by heuristic"
+      ],
+      "spoiler_risk": "low",
+      "spoiler_note": "estimated from episode position (1/2) only",
+      "weaknesses": [
+        "keyword/structure heuristic: cannot judge story clarity or whether the ending is truly unresolved"
+      ],
+      "model_confidence": "low",
+      "errors": [],
+      "warnings": [],
+      "valid": true,
+      "transcript": [
+        {
+          "episode": 1,
+          "id": "L003",
+          "kind": "dialogue",
+          "segment": 1,
+          "clip_time": 0.0,
+          "render": "L003 [00:03.20-00:05.00] DIA VICTOR (Low, Menacing): \"You buried the wrong sister.\"",
+          "speaker": "VICTOR",
+          "text": "\"You buried the wrong sister.\""
+        },
+        {
+          "episode": 1,
+          "id": "L004",
+          "kind": "dialogue",
+          "segment": 1,
+          "clip_time": 2.2,
+          "render": "L004 [00:05.40-00:06.60] DIA MAYA (Stunned): \"What did you say?\"",
+          "speaker": "MAYA",
+          "text": "\"What did you say?\""
+        },
+        {
+          "episode": 1,
+          "id": "L005",
+          "kind": "camera",
+          "segment": 1,
+          "clip_time": 3.4,
+          "render": "L005 [00:06.60-00:09.00] CAM Insert on the photograph: Maya's twin, smiling, holding today's newspaper.",
+          "speaker": "",
+          "text": "Insert on the photograph: Maya's twin, smiling, holding today's newspaper."
+        },
+        {
+          "episode": 1,
+          "id": "L006",
+          "kind": "dialogue",
+          "segment": 1,
+          "clip_time": 3.8,
+          "render": "L006 [00:07.00-00:09.80] DIA VICTOR (Cold): \"She is alive. And she wants your life back.\"",
+          "speaker": "VICTOR",
+          "text": "\"She is alive. And she wants your life back.\""
+        },
+        {
+          "episode": 1,
+          "id": "L007",
+          "kind": "action",
+          "segment": 1,
+          "clip_time": 6.8,
+          "render": "L007 [00:10.00-00:12.00] ACT Maya drops the coffee pot. It shatters across the tiles.",
+          "speaker": "",
+          "text": "Maya drops the coffee pot. It shatters across the tiles."
+        },
+        {
+          "episode": 1,
+          "id": "L008",
+          "kind": "sfx",
+          "segment": 1,
+          "clip_time": 6.9,
+          "render": "L008 [00:10.10-00:11.00] SFX Sharp crash of shattering glass.",
+          "speaker": "",
+          "text": "Sharp crash of shattering glass."
+        },
+        {
+          "episode": 1,
+          "id": "L009",
+          "kind": "dialogue",
+          "segment": 1,
+          "clip_time": 9.3,
+          "render": "L009 [00:12.50-00:15.00] DIA MAYA (Shaking): \"I watched them lower her coffin.\"",
+          "speaker": "MAYA",
+          "text": "\"I watched them lower her coffin.\""
+        },
+        {
+          "episode": 1,
+          "id": "L010",
+          "kind": "dialogue",
+          "segment": 1,
+          "clip_time": 12.2,
+          "render": "L010 [00:15.40-00:18.00] DIA VICTOR (Amused): \"You watched them lower a box.\"",
+          "speaker": "VICTOR",
+          "text": "\"You watched them lower a box.\""
+        },
+        {
+          "episode": 1,
+          "id": "L011",
+          "kind": "camera",
+          "segment": 1,
+          "clip_time": 14.8,
+          "render": "L011 [00:18.00-00:21.00] CAM Medium shot as Victor stands, buttoning his coat.",
+          "speaker": "",
+          "text": "Medium shot as Victor stands, buttoning his coat."
+        },
+        {
+          "episode": 1,
+          "id": "L012",
+          "kind": "dialogue",
+          "segment": 1,
+          "clip_time": 18.0,
+          "render": "L012 [00:21.20-00:24.50] DIA VICTOR (Quiet): \"Midnight. The old pier. Come alone.\"",
+          "speaker": "VICTOR",
+          "text": "\"Midnight. The old pier. Come alone.\""
+        },
+        {
+          "episode": 1,
+          "id": "L013",
+          "kind": "dialogue",
+          "segment": 1,
+          "clip_time": 21.8,
+          "render": "L013 [00:25.00-00:27.00] DIA MAYA (Desperate): \"Why are you helping me?\"",
+          "speaker": "MAYA",
+          "text": "\"Why are you helping me?\""
+        },
+        {
+          "episode": 1,
+          "id": "L014",
+          "kind": "dialogue",
+          "segment": 1,
+          "clip_time": 24.3,
+          "render": "L014 [00:27.50-00:30.00] DIA VICTOR (Smiling): \"Who said I was?\"",
+          "speaker": "VICTOR",
+          "text": "\"Who said I was?\""
+        },
+        {
+          "episode": 1,
+          "id": "L015",
+          "kind": "camera",
+          "segment": 1,
+          "clip_time": 26.8,
+          "render": "L015 [00:30.00-00:33.00] CAM Close-up on Maya's face as the door chime rings and Victor disappears into the rain.",
+          "speaker": "",
+          "text": "Close-up on Maya's face as the door chime rings and Victor disappears into the rain."
+        },
+        {
+          "episode": 1,
+          "id": "L016",
+          "kind": "action",
+          "segment": 1,
+          "clip_time": 29.8,
+          "render": "L016 [00:33.00-00:36.00] ACT Maya turns the photograph over. On the back, in her own handwriting: DON'T TRUST HIM.",
+          "speaker": "",
+          "text": "Maya turns the photograph over. On the back, in her own handwriting: DON'T TRUST HIM."
+        },
+        {
+          "episode": 1,
+          "id": "L017",
+          "kind": "sfx",
+          "segment": 1,
+          "clip_time": 31.8,
+          "render": "L017 [00:35.00-00:38.00] SFX Ominous low drone swells to a cliffhanger sting.",
+          "speaker": "",
+          "text": "Ominous low drone swells to a cliffhanger sting."
+        }
+      ],
+      "raw_candidate": {
+        "title": "Ep 1 rule-based pick @ L003",
+        "segments": [
+          {
+            "episode": 1,
+            "start_id": "L003",
+            "end_id": "L017"
+          }
+        ],
+        "hook_id": "L003",
+        "hook": "Opens on: \"You buried the wrong sister.\"",
+        "cliffhanger_id": "L017",
+        "cliffhanger": "Cuts on: Ominous low drone swells to a cliffhanger sting.",
+        "why_it_works": "Heuristic: opening-signal 2.6, ending-signal 3.5, intense delivery on 38% of lines. No story understanding.",
+        "stranger_view": "Not assessed (heuristic has no story understanding).",
+        "evidence_ids": [
+          "L003",
+          "L017"
+        ],
+        "scores": {
+          "hook": {
+            "score": 3,
+            "reason": "rule-based estimate (see heuristic.py)"
+          },
+          "cliffhanger": {
+            "score": 5,
+            "reason": "rule-based estimate (see heuristic.py)"
+          },
+          "standalone": {
+            "score": 3,
+            "reason": "rule-based estimate (see heuristic.py)"
+          },
+          "emotion_curiosity": {
+            "score": 3,
+            "reason": "rule-based estimate (see heuristic.py)"
+          },
+          "visual": {
+            "score": 2,
+            "reason": "rule-based estimate (see heuristic.py)"
+          },
+          "spoiler_safety": {
+            "score": 4,
+            "reason": "rule-based estimate (see heuristic.py)"
+          }
+        },
+        "context_dependencies": [
+          "not assessed by heuristic"
+        ],
+        "spoiler_risk": "low",
+        "spoiler_note": "estimated from episode position (1/2) only",
+        "weaknesses": [
+          "keyword/structure heuristic: cannot judge story clarity or whether the ending is truly unresolved"
+        ],
+        "confidence": "low"
+      },
+      "score": {
+        "base": 62.3,
+        "penalties": [],
+        "total": 62.3,
+        "weights": {
+          "hook": 0.25,
+          "cliffhanger": 0.25,
+          "standalone": 0.2,
+          "emotion_curiosity": 0.15,
+          "visual": 0.08,
+          "spoiler_safety": 0.07
+        }
+      },
+      "confidence": "low",
+      "confidence_reasons": [
+        "heuristic fallback: keyword/structure rules, no model judgment"
+      ],
+      "review_flags": [
+        "low confidence"
+      ],
+      "needs_human_review": true,
+      "duplicate_of": null,
+      "overall_rank": 1,
+      "shortlist_rank": 1
+    },
+    {
+      "id": "E02-C1",
+      "origin": "heuristic",
+      "episodes": [
+        2
+      ],
+      "title": "Ep 2 rule-based pick @ L003",
+      "segments": [
+        {
+          "episode": 2,
+          "start_id": "L003",
+          "end_id": "L013",
+          "start": 7.5,
+          "end": 36.0,
+          "start_tc": "00:07.50",
+          "end_tc": "00:36.00",
+          "duration": 28.5
+        }
+      ],
+      "metrics": {
+        "total_duration": 28.5,
+        "segments": 1,
+        "hook_offset": 0.0,
+        "cliffhanger_tail": 0.0,
+        "first_beat_offset": 0.0,
+        "first_dialogue_offset": 0.0,
+        "dialogue_lines": 7,
+        "speakers": 2,
+        "longest_gap_without_dialogue": 6.0
+      },
+      "hook": "Opens on: \"Hello?\"",
+      "hook_line": "L003 [00:07.50-00:09.00] DIA MAYA (Whispering): \"Hello?\"",
+      "cliffhanger": "Cuts on: Thunderclap and a sudden cliffhanger cut.",
+      "cliffhanger_line": "L013 [00:34.00-00:36.00] SFX Thunderclap and a sudden cliffhanger cut.",
+      "why_it_works": "Heuristic: opening-signal 1.0, ending-signal 3.5, intense delivery on 29% of lines. No story understanding.",
+      "stranger_view": "Not assessed (heuristic has no story understanding).",
+      "evidence": [
+        {
+          "episode": 2,
+          "id": "L003",
+          "render": "L003 [00:07.50-00:09.00] DIA MAYA (Whispering): \"Hello?\"",
+          "inside_clip": true
+        },
+        {
+          "episode": 2,
+          "id": "L013",
+          "render": "L013 [00:34.00-00:36.00] SFX Thunderclap and a sudden cliffhanger cut.",
+          "inside_clip": true
+        }
+      ],
+      "scores": {
+        "hook": {
+          "score": 2,
+          "reason": "rule-based estimate (see heuristic.py)"
+        },
+        "cliffhanger": {
+          "score": 5,
+          "reason": "rule-based estimate (see heuristic.py)"
+        },
+        "standalone": {
+          "score": 3,
+          "reason": "rule-based estimate (see heuristic.py)"
+        },
+        "emotion_curiosity": {
+          "score": 2,
+          "reason": "rule-based estimate (see heuristic.py)"
+        },
+        "visual": {
+          "score": 1,
+          "reason": "rule-based estimate (see heuristic.py)"
+        },
+        "spoiler_safety": {
+          "score": 2,
+          "reason": "rule-based estimate (see heuristic.py)"
+        }
+      },
+      "context_dependencies": [
+        "not assessed by heuristic"
+      ],
+      "spoiler_risk": "high",
+      "spoiler_note": "estimated from episode position (2/2) only",
+      "weaknesses": [
+        "keyword/structure heuristic: cannot judge story clarity or whether the ending is truly unresolved"
+      ],
+      "model_confidence": "low",
+      "errors": [],
+      "warnings": [],
+      "valid": true,
+      "transcript": [
+        {
+          "episode": 2,
+          "id": "L003",
+          "kind": "dialogue",
+          "segment": 1,
+          "clip_time": 0.0,
+          "render": "L003 [00:07.50-00:09.00] DIA MAYA (Whispering): \"Hello?\"",
+          "speaker": "MAYA",
+          "text": "\"Hello?\""
+        },
+        {
+          "episode": 2,
+          "id": "L004",
+          "kind": "camera",
+          "segment": 1,
+          "clip_time": 1.5,
+          "render": "L004 [00:09.00-00:12.00] CAM Over-the-shoulder shot revealing a woman with Maya's face at the far end of the pier.",
+          "speaker": "",
+          "text": "Over-the-shoulder shot revealing a woman with Maya's face at the far end of the pier."
+        },
+        {
+          "episode": 2,
+          "id": "L005",
+          "kind": "dialogue",
+          "segment": 1,
+          "clip_time": 4.7,
+          "render": "L005 [00:12.20-00:14.50] DIA ELENA (Calm): \"Hello, sister. You look tired.\"",
+          "speaker": "ELENA",
+          "text": "\"Hello, sister. You look tired.\""
+        },
+        {
+          "episode": 2,
+          "id": "L006",
+          "kind": "dialogue",
+          "segment": 1,
+          "clip_time": 7.5,
+          "render": "L006 [00:15.00-00:17.00] DIA MAYA (Breaking): \"You let me grieve you for a year!\"",
+          "speaker": "MAYA",
+          "text": "\"You let me grieve you for a year!\""
+        },
+        {
+          "episode": 2,
+          "id": "L007",
+          "kind": "dialogue",
+          "segment": 1,
+          "clip_time": 10.0,
+          "render": "L007 [00:17.50-00:21.00] DIA ELENA (Cold): \"I let you keep my husband warm for a year.\"",
+          "speaker": "ELENA",
+          "text": "\"I let you keep my husband warm for a year.\""
+        },
+        {
+          "episode": 2,
+          "id": "L008",
+          "kind": "action",
+          "segment": 1,
+          "clip_time": 13.5,
+          "render": "L008 [00:21.00-00:23.00] ACT Maya steps back as headlights flare behind Elena.",
+          "speaker": "",
+          "text": "Maya steps back as headlights flare behind Elena."
+        },
+        {
+          "episode": 2,
+          "id": "L009",
+          "kind": "dialogue",
+          "segment": 1,
+          "clip_time": 16.0,
+          "render": "L009 [00:23.50-00:26.00] DIA ELENA (Commanding): \"Tonight, you give it all back.\"",
+          "speaker": "ELENA",
+          "text": "\"Tonight, you give it all back.\""
+        },
+        {
+          "episode": 2,
+          "id": "L010",
+          "kind": "dialogue",
+          "segment": 1,
+          "clip_time": 19.0,
+          "render": "L010 [00:26.50-00:28.50] DIA MAYA (Defiant): \"And if I refuse?\"",
+          "speaker": "MAYA",
+          "text": "\"And if I refuse?\""
+        },
+        {
+          "episode": 2,
+          "id": "L011",
+          "kind": "camera",
+          "segment": 1,
+          "clip_time": 21.0,
+          "render": "L011 [00:28.50-00:31.00] CAM Close-up on Elena raising a ring with Maya's initials engraved inside.",
+          "speaker": "",
+          "text": "Close-up on Elena raising a ring with Maya's initials engraved inside."
+        },
+        {
+          "episode": 2,
+          "id": "L012",
+          "kind": "dialogue",
+          "segment": 1,
+          "clip_time": 23.5,
+          "render": "L012 [00:31.00-00:34.00] DIA ELENA (Smiling): \"Then the police find this beside his body.\"",
+          "speaker": "ELENA",
+          "text": "\"Then the police find this beside his body.\""
+        },
+        {
+          "episode": 2,
+          "id": "L013",
+          "kind": "sfx",
+          "segment": 1,
+          "clip_time": 26.5,
+          "render": "L013 [00:34.00-00:36.00] SFX Thunderclap and a sudden cliffhanger cut.",
+          "speaker": "",
+          "text": "Thunderclap and a sudden cliffhanger cut."
+        }
+      ],
+      "raw_candidate": {
+        "title": "Ep 2 rule-based pick @ L003",
+        "segments": [
+          {
+            "episode": 2,
+            "start_id": "L003",
+            "end_id": "L013"
+          }
+        ],
+        "hook_id": "L003",
+        "hook": "Opens on: \"Hello?\"",
+        "cliffhanger_id": "L013",
+        "cliffhanger": "Cuts on: Thunderclap and a sudden cliffhanger cut.",
+        "why_it_works": "Heuristic: opening-signal 1.0, ending-signal 3.5, intense delivery on 29% of lines. No story understanding.",
+        "stranger_view": "Not assessed (heuristic has no story understanding).",
+        "evidence_ids": [
+          "L003",
+          "L013"
+        ],
+        "scores": {
+          "hook": {
+            "score": 2,
+            "reason": "rule-based estimate (see heuristic.py)"
+          },
+          "cliffhanger": {
+            "score": 5,
+            "reason": "rule-based estimate (see heuristic.py)"
+          },
+          "standalone": {
+            "score": 3,
+            "reason": "rule-based estimate (see heuristic.py)"
+          },
+          "emotion_curiosity": {
+            "score": 2,
+            "reason": "rule-based estimate (see heuristic.py)"
+          },
+          "visual": {
+            "score": 1,
+            "reason": "rule-based estimate (see heuristic.py)"
+          },
+          "spoiler_safety": {
+            "score": 2,
+            "reason": "rule-based estimate (see heuristic.py)"
+          }
+        },
+        "context_dependencies": [
+          "not assessed by heuristic"
+        ],
+        "spoiler_risk": "high",
+        "spoiler_note": "estimated from episode position (2/2) only",
+        "weaknesses": [
+          "keyword/structure heuristic: cannot judge story clarity or whether the ending is truly unresolved"
+        ],
+        "confidence": "low"
+      },
+      "score": {
+        "base": 46.8,
+        "penalties": [],
+        "total": 46.8,
+        "weights": {
+          "hook": 0.25,
+          "cliffhanger": 0.25,
+          "standalone": 0.2,
+          "emotion_curiosity": 0.15,
+          "visual": 0.08,
+          "spoiler_safety": 0.07
+        }
+      },
+      "confidence": "low",
+      "confidence_reasons": [
+        "heuristic fallback: keyword/structure rules, no model judgment"
+      ],
+      "review_flags": [
+        "low confidence",
+        "high spoiler risk"
+      ],
+      "needs_human_review": true,
+      "duplicate_of": null,
+      "overall_rank": 2,
+      "shortlist_rank": 2
+    }
+  ],
+  "rejected": [],
+  "ranking": {
+    "shortlist": [
+      "E01-C1",
+      "E02-C1"
+    ],
+    "alternatives": [],
+    "duplicates": [],
+    "ranked": [
+      "E01-C1",
+      "E02-C1"
+    ]
+  }
+}

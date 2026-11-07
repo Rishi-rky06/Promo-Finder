@@ -1,0 +1,64 @@
+{
+  "task_id": "mine_E01",
+  "provider": "heuristic",
+  "parsed": {
+    "episode_note": "heuristic baseline: 12 windows scored",
+    "candidates": [
+      {
+        "title": "Ep 1 rule-based pick @ L003",
+        "segments": [
+          {
+            "episode": 1,
+            "start_id": "L003",
+            "end_id": "L017"
+          }
+        ],
+        "hook_id": "L003",
+        "hook": "Opens on: \"You buried the wrong sister.\"",
+        "cliffhanger_id": "L017",
+        "cliffhanger": "Cuts on: Ominous low drone swells to a cliffhanger sting.",
+        "why_it_works": "Heuristic: opening-signal 2.6, ending-signal 3.5, intense delivery on 38% of lines. No story understanding.",
+        "stranger_view": "Not assessed (heuristic has no story understanding).",
+        "evidence_ids": [
+          "L003",
+          "L017"
+        ],
+        "scores": {
+          "hook": {
+            "score": 3,
+            "reason": "rule-based estimate (see heuristic.py)"
+          },
+          "cliffhanger": {
+            "score": 5,
+            "reason": "rule-based estimate (see heuristic.py)"
+          },
+          "standalone": {
+            "score": 3,
+            "reason": "rule-based estimate (see heuristic.py)"
+          },
+          "emotion_curiosity": {
+            "score": 3,
+            "reason": "rule-based estimate (see heuristic.py)"
+          },
+          "visual": {
+            "score": 2,
+            "reason": "rule-based estimate (see heuristic.py)"
+          },
+          "spoiler_safety": {
+            "score": 4,
+            "reason": "rule-based estimate (see heuristic.py)"
+          }
+        },
+        "context_dependencies": [
+          "not assessed by heuristic"
+        ],
+        "spoiler_risk": "low",
+        "spoiler_note": "estimated from episode position (1/2) only",
+        "weaknesses": [
+          "keyword/structure heuristic: cannot judge story clarity or whether the ending is truly unresolved"
+        ],
+        "confidence": "low"
+      }
+    ]
+  }
+}
